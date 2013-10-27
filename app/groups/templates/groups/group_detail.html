@@ -1,0 +1,202 @@
+{% extends "users/base.html" %}
+{% block content %}
+
+{% comment %}
+Get the group specific items and put them in specific items
+Set properties for the group items for asynchronous requests
+{% endcomment %}
+
+
+{% comment %}
+['Meta', '__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', 
+'__getitem__', '__hash__', '__init__', '__iter__', '__metaclass__', '__module__', '__new__', 
+'__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', 
+'__subclasshook__', '__unicode__', '__weakref__', '_changed_data', '_clean_fields', 
+'_clean_form', '_errors', '_get_changed_data', '_get_errors', '_get_media', 
+'_get_validation_exclusions', '_html_output', '_meta', '_post_clean', '_raw_value', 
+'_update_errors', '_validate_unique', 'add_initial_prefix', 'add_prefix', 'as_p', 
+'as_table', 'as_ul', 'auto_id', 'base_fields', 'changed_data', 'clean', 'data', 
+'declared_fields', 'empty_permitted', 'error_class', 'errors', 'fields', 'files', 
+'full_clean', 'has_changed', 'hidden_fields', 'initial', 'instance', 'is_bound', 
+'is_multipart', 'is_valid', 'label_suffix', 'media', 'non_field_errors', 'prefix', 
+'save', 'validate_unique', 'visible_fields']
+{% endcomment %}
+
+{% with gf=display_context.group_form %}
+<div class="group-container" >
+
+<form method="post" action="/groups/{{object.id}}/{{display_context.action}}" >
+
+{% if display_context.mode == "edit" %}
+<!--<div class="group-name" > -->
+<input readonly ="readonly" type="text" name="group_name" value="{{ gf.name.value }}" />
+<!-- </div> --> 
+<!--<div class="group-description" > -->
+<textarea name="group_description" rows="4" cols="20">{{ gf.description.value }}</textarea>
+<!--</div> --> <!-- end of div group-description -->
+{% else %}
+<!--<div class="group-name" > -->
+<h1>{{ gf.name.value }}</h1>
+<!-- </div> --> 
+<!--<div class="group-description" > -->
+<h3>{{ gf.description.value }}</h3>
+<!--</div> --> <!-- end of div group-description -->
+{% endif %}
+<button type="submit" >{{display_context.button}}</button>
+</form>
+</div> <!-- end of div group-container -->
+{% endwith %}
+<hr/>
+
+<div class="messages" >
+<br/> <br/>
+{% for d,dobj,mlist in object.get_messages_for_discussions %}
+<div class="discussion_pane" id="div-gd-{{ dobj.id }}" >
+<form method="post" action="/group_discussions/{{ dobj.id }}/edit" >
+<input type="hidden" name="belongs_to" value="{{ object.id }}" ></input>
+<input type="hidden" name="context_referrer" value="group" ></input>
+<input type="hidden" name="context_referrer_id" value="{{ object.id }}" ></input>
+<input type="hidden" name="discussion_id" value="{{ dobj.id }}" ></input>
+<input type="hidden" name="action_url" value="group_discussions/{{ dobj.id }}/update" ></input>
+<input type="text" name="discussion_name" value="{{ dobj.name }}" readonly="readonly" ></input>
+<button type="submit" >Edit</button>
+</form>
+ <div class="message_pane" >
+ {% for m in mlist %}
+ <div id="div-msg-{{ m.id }}" > 
+ <form method="post" action="{% url edit-group-discussion-message m.id %}" >
+ <input type="text" name="belongs_to" value="{{ d }}" ></input>
+ <input type="text" name="raw_message" value="{{ m.raw_message }}" ></input>
+ <input type="text" name="reply_for" value="{{ m.linked_message }}" ></input>
+ <input type="hidden" name="context_referrer" value="group" ></input>
+ <input type="hidden" name="context_referrer_id" value="{{ object.id }}" ></input>
+ <button type="submit" name="submit_mode" value="reply" >Reply</button>
+ <button type="submit" name="submit_mode" value="edit" >Edit</button>
+ <button type="submit" name="submit_mode" value="delete" >Delete</button>
+ </form>  
+ </div>
+ {% endfor %}
+  <form method="post" action="{% url create-group-discussion-message %}" >
+ <input type="hidden" name="belongs_to" value="{{ d }}" ></input>
+ <input type="text" name="raw_message" value="Post new message" ></input>
+ <input type="hidden" name="context_referrer" value="group" ></input>
+ <input type="hidden" name="context_referrer_id" value="{{ object.id }}" ></input>
+ <button type="submit" >Post</button>
+ </form>
+ 
+ </div> <!-- end of div message_pane -->
+</div> <!-- end of div discussion_pane -->
+{% endfor %}
+ <div class="new-discussion-pane" >
+ Start a new discussion
+<form action='/group_discussions/create/' method='post'>
+	Discussion Name:
+	<input name='name' value="" />
+	<input name='belongs_to' value="{{ object.id|escape }}" />
+	<input type="hidden" name="context_referrer" value="group" ></input>
+    <input type="hidden" name="context_referrer_id" value="{{ object.id }}" ></input>
+	<input type="submit" value="Create" >
+</form>
+ </div>
+
+</div> <!-- end of div messages -->
+<hr/>
+{% comment %}
+Set up a view such that discussions are displayed
+Sticky comments on the top (a max of 5)
+Last 5 latest updated discussions next, with number of posts
+Possible? ability to post to multiple groups without traversing
+something like a curtain view...or a slide window view.
+Question: Definitely need to check how things will happen in mobile
+So need a standalone discussion form too.
+Apart from that this page should be treated as a single page app
+for all general purposes. But will that cause a problem.
+
+So what needs in initial fetch (barebones)
+1. Group name, description, picture, requested by admin, ->Group Model 
+then admin panel -> Separate library?
+members ->Group Model
+, following groups/users, followed by groups/users, ->Graph 
+total active discussions -> GroupDiscussion Model
+2. Top 5 Sticky discussions with number of replies. separate pagination -> GroupDiscussion, GroupDiscussionMessage Model
+3. Latest 5 recently updated discussions -> GroupDiscussion, GroupDiscussionMessage Model 
+4. Pagination to look for other discussions.
+5. Meta data of Discussions (author, shares, likes, links, attachments) -> Discussion
+6. Meta data of Messages (author, links, attachments ) -> Messages
+
+
+Graceful degradation
+
+{% endcomment %}
+
+
+{% with group_discussion_lister=object.get_group_discussions %}
+<div>
+Total Discussions: {{ group_discussion_lister|length }}
+{% for discussionid,discussionobj in group_discussion_lister %} 
+<div class="group-discussion-item" >
+<h3>{{ discussionobj.name }}</h3>
+{% comment %}
+<a href='{% url show-group-discussion discussionid %}' >{{ discussionobj.name }}</a><br/>
+{% endcomment %}
+</div>
+{% endfor %}
+</div>
+{% endwith %}
+
+{{ object.get_messages_for_discussions }}
+{% with gd_messages_lister=object.get_group_discussions_with_messages %}
+<div>
+Total Messages: {{ gd_messages_lister|length }}
+{% for gd,nom, gdm in gd_messages_lister %} 
+<div class="group-discussion-message-item" >
+<h3>{{ gd }},{{ nom }},{{ gdm }},{{ gdm.raw_message }},</h3>
+</div>
+{% endfor %}
+</div>
+{% endwith %}
+
+{% comment %}
+ {% for k,v in group_fields.items %} 
+ {{ k }}: {{ v }},
+ {% endfor %}
+ </div>
+{% endwith %}
+{% endcomment %}
+
+<!--
+<br/>
+Discussions:
+<br/>
+{{ group_discussions_list }}
+-->
+{% comment %}
+<br/>
+Discussions directly from Model:
+<br/>
+{% with group_discussion_lister=object.get_group_discussions %}
+{% for discussionid,discussionobj in group_discussion_lister %} 
+{{ discussionid }},{{ discussionobj.name }}
+<br/>
+{% endfor %}
+Discussions through ORM:
+<br/>
+{% for discussion in object.groupdiscussion_set.all %}
+{{ discussion.id }},{{ discussion.name }}
+<br/>
+Messages:<br/>
+
+{% for v in  discussion.groupdiscussionmessage_set.all %}
+{{ v.id }},{{ v.raw_message }},{{ v.group_discussion }}<br/>
+{% endfor %}
+
+
+<a href='{% url new-group-discussion-message %}?link_pk={{discussion.id}}' >Post a message</a><br/>
+{% endfor %}
+{% endwith %}
+
+<a href='{% url new-group-discussion %}?link_pk={{object.id}}' >Create Discussion</a>
+{% endcomment %}
+	
+
+{%endblock%}

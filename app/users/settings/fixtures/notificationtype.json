@@ -1,0 +1,18 @@
+[
+  {
+    "model": "accounts.NotificationType",
+    "pk": 1,
+    "fields": {
+      "type": "Notify when someone wants to connect with me",
+      "is_default_enabled": true
+    }
+  },
+  {
+    "model": "accounts.NotificationType",
+    "pk": 2,
+    "fields": {
+      "type": "Notify when someone view my profile",
+      "is_default_enabled": true
+    }
+  }
+]

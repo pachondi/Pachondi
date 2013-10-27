@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+  <head>
+  	<link rel="stylesheet" href="{{MEDIA_URL}}css/style.css">
+ 
+    <script src="{{STATIC_URL}}js/jquery-1.9.1.min.js"></script>
+    <script src="{{STATIC_URL}}js/underscore-min.js"></script>    
+    <script src="{{STATIC_URL}}js/backbone-min.js"></script>
+    <script>
+      
+    </script>
+    <script src="{{STATIC_URL}}js/app.js"></script>
+
+    <script type="text/html" id="tweetTemplate">
+      <a class="username"><%=username%></a>
+      <p class="message">
+        <%=message%>
+      </p>
+      <abbr class="timestamp"><%=timestamp%></abbr>
+    </script>
+   	<meta name="csrf-token" content="{{csrf_token}}">
+   	<style>
+	   	.menu
+	   	{
+	   		list-style:none;
+	   		float:right;
+	   	}
+   		.menu li
+   		{
+   			float:left;
+   			width:70px;
+   		}
+   		.textarea
+   		{
+   			width:450px;
+   		}
+   		.menu li a
+   		{
+   			text-decoration: none;
+   			color:maroon;
+   			font-family: verdana;
+   			font-size: 12px;
+   			font-weight: bold;
+   		}
+   		.logo{background-color:maroon;font-family:"Comic Sans MS" ;border:1px solid;
+   		
+   		text-align:center;
+   		padding:10px; 
+   		}
+   		.logo a{
+   		color:white;
+   		text-decoration: none;
+   		}
+   	</style>
+  </head>
+  <body>
+  	<table>
+  	<tr>
+  		<td><h1 class="logo"><a href="/users/home">Pachondi.com</a></h1></td>
+  		<td>
+  			<ul class="menu">
+  				<li><a href="{% url 'app.users.views.home' %}">Home</a></li>
+  				<li><a href="{% url 'app.profile.views.profile' %}">Profile</a></li>
+  				<li><a href="/groups/">Groups</a></li>
+  				<li><a href="{% url 'app.users.settings.views.settings' %}">Settings</a></li>
+  				{% comment %}
+  				<li><a href="{% url 'network.views.connections' %}">Manage Connections</a></li>
+  				{% endcomment %}
+  				{{request.user}}
+  				<li><a href="{% url 'logout_view' %}">Logout</a></li>
+  			</ul>
+  		</td>
+  	</tr>
+  	<tr><td colspan="2">
+  		{% if not request.user.is_verified %}
+		<p style="background-color:#FFE200;padding:5px;">
+			Your E-mail address not verified. Please verify your email address by following the steps mentioned in your registration email to have full access.		
+		</p>
+		{%endif%}
+    {% block content %}
+    {% endblock %}
+    </td></tr>
+    </table>
+  </body>
+</html>

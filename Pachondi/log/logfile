@@ -1,0 +1,408 @@
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] __class__
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] __delattr__
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] __dict__
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] __doc__
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] __format__
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] __getattribute__
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] __hash__
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] __init__
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] __module__
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] __new__
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] __reduce__
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] __reduce_ex__
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] __repr__
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] __setattr__
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] __sizeof__
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] __str__
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] __subclasshook__
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] __weakref__
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] _copy_to_model
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] _db
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] _inherited
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] _insert
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] _set_creation_counter
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] _update
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] add
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] aggregate
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] all
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] annotate
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] bulk_create
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] complex_filter
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] contribute_to_class
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] core_filters
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] count
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] create
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] creation_counter
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] dates
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] db
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] db_manager
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] defer
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] distinct
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] exclude
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] exists
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] extra
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] filter
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] get
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] get_empty_query_set
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] get_or_create
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] get_prefetch_query_set
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] get_query_set
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] in_bulk
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] instance
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] iterator
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] latest
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] model
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] none
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] only
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] order_by
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] prefetch_related
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] raw
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] reverse
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] select_for_update
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] select_related
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] update
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] using
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] values
+[04/Jul/2013 21:55:45] DEBUG [groups.models:22] values_list
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] __class__
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] __delattr__
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] __dict__
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] __doc__
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] __format__
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] __getattribute__
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] __hash__
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] __init__
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] __module__
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] __new__
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] __reduce__
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] __reduce_ex__
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] __repr__
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] __setattr__
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] __sizeof__
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] __str__
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] __subclasshook__
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] __weakref__
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] _copy_to_model
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] _db
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] _inherited
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] _insert
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] _set_creation_counter
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] _update
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] add
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] aggregate
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] all
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] annotate
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] bulk_create
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] complex_filter
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] contribute_to_class
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] core_filters
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] count
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] create
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] creation_counter
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] dates
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] db
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] db_manager
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] defer
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] distinct
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] exclude
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] exists
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] extra
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] filter
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] get
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] get_empty_query_set
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] get_or_create
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] get_prefetch_query_set
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] get_query_set
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] in_bulk
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] instance
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] iterator
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] latest
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] model
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] none
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] only
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] order_by
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] prefetch_related
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] raw
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] reverse
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] select_for_update
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] select_related
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] update
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] using
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] values
+[04/Jul/2013 21:56:04] DEBUG [groups.models:22] values_list
+[04/Jul/2013 22:02:49] DEBUG [groups.models:33] __call__
+[04/Jul/2013 22:02:49] DEBUG [groups.models:33] __class__
+[04/Jul/2013 22:02:49] DEBUG [groups.models:33] __cmp__
+[04/Jul/2013 22:02:49] DEBUG [groups.models:33] __delattr__
+[04/Jul/2013 22:02:49] DEBUG [groups.models:33] __doc__
+[04/Jul/2013 22:02:49] DEBUG [groups.models:33] __format__
+[04/Jul/2013 22:02:49] DEBUG [groups.models:33] __func__
+[04/Jul/2013 22:02:49] DEBUG [groups.models:33] __get__
+[04/Jul/2013 22:02:49] DEBUG [groups.models:33] __getattribute__
+[04/Jul/2013 22:02:49] DEBUG [groups.models:33] __hash__
+[04/Jul/2013 22:02:49] DEBUG [groups.models:33] __init__
+[04/Jul/2013 22:02:49] DEBUG [groups.models:33] __new__
+[04/Jul/2013 22:02:49] DEBUG [groups.models:33] __reduce__
+[04/Jul/2013 22:02:49] DEBUG [groups.models:33] __reduce_ex__
+[04/Jul/2013 22:02:49] DEBUG [groups.models:33] __repr__
+[04/Jul/2013 22:02:49] DEBUG [groups.models:33] __self__
+[04/Jul/2013 22:02:49] DEBUG [groups.models:33] __setattr__
+[04/Jul/2013 22:02:49] DEBUG [groups.models:33] __sizeof__
+[04/Jul/2013 22:02:49] DEBUG [groups.models:33] __str__
+[04/Jul/2013 22:02:49] DEBUG [groups.models:33] __subclasshook__
+[04/Jul/2013 22:02:49] DEBUG [groups.models:33] im_class
+[04/Jul/2013 22:02:49] DEBUG [groups.models:33] im_func
+[04/Jul/2013 22:02:49] DEBUG [groups.models:33] im_self
+[04/Jul/2013 22:04:02] DEBUG [groups.models:33] __call__
+[04/Jul/2013 22:04:02] DEBUG [groups.models:33] __class__
+[04/Jul/2013 22:04:02] DEBUG [groups.models:33] __cmp__
+[04/Jul/2013 22:04:02] DEBUG [groups.models:33] __delattr__
+[04/Jul/2013 22:04:02] DEBUG [groups.models:33] __doc__
+[04/Jul/2013 22:04:02] DEBUG [groups.models:33] __format__
+[04/Jul/2013 22:04:02] DEBUG [groups.models:33] __func__
+[04/Jul/2013 22:04:02] DEBUG [groups.models:33] __get__
+[04/Jul/2013 22:04:02] DEBUG [groups.models:33] __getattribute__
+[04/Jul/2013 22:04:02] DEBUG [groups.models:33] __hash__
+[04/Jul/2013 22:04:02] DEBUG [groups.models:33] __init__
+[04/Jul/2013 22:04:02] DEBUG [groups.models:33] __new__
+[04/Jul/2013 22:04:02] DEBUG [groups.models:33] __reduce__
+[04/Jul/2013 22:04:02] DEBUG [groups.models:33] __reduce_ex__
+[04/Jul/2013 22:04:02] DEBUG [groups.models:33] __repr__
+[04/Jul/2013 22:04:02] DEBUG [groups.models:33] __self__
+[04/Jul/2013 22:04:02] DEBUG [groups.models:33] __setattr__
+[04/Jul/2013 22:04:02] DEBUG [groups.models:33] __sizeof__
+[04/Jul/2013 22:04:02] DEBUG [groups.models:33] __str__
+[04/Jul/2013 22:04:02] DEBUG [groups.models:33] __subclasshook__
+[04/Jul/2013 22:04:02] DEBUG [groups.models:33] im_class
+[04/Jul/2013 22:04:02] DEBUG [groups.models:33] im_func
+[04/Jul/2013 22:04:02] DEBUG [groups.models:33] im_self
+[04/Jul/2013 22:08:08] DEBUG [groups.models:34] First Discussion
+[04/Jul/2013 22:08:08] DEBUG [groups.models:34] Third Discussion
+[04/Jul/2013 22:08:08] DEBUG [groups.models:34] Fourth Discussion
+[04/Jul/2013 22:08:08] DEBUG [groups.models:34] Sixth discussion
+[04/Jul/2013 22:08:08] DEBUG [groups.models:34] 1st Discussion
+[04/Jul/2013 22:08:08] DEBUG [groups.models:34] 1st Discussionsss
+[04/Jul/2013 22:09:04] DEBUG [groups.models:35] 1st message
+[04/Jul/2013 22:09:04] DEBUG [groups.models:35] 2nd message
+[04/Jul/2013 22:09:04] DEBUG [groups.models:35] 3rd message
+[04/Jul/2013 22:09:04] DEBUG [groups.models:35] fourth Message
+[04/Jul/2013 22:09:04] DEBUG [groups.models:35] a different message
+[04/Jul/2013 22:13:08] DEBUG [groups.models:35] 1st message
+[04/Jul/2013 22:13:08] DEBUG [groups.models:35] 2nd message
+[04/Jul/2013 22:13:08] DEBUG [groups.models:35] 3rd message
+[04/Jul/2013 22:13:08] DEBUG [groups.models:35] fourth Message
+[04/Jul/2013 22:13:08] DEBUG [groups.models:35] a different message
+[04/Jul/2013 22:43:58] DEBUG [groups.models:42] <bound method RelatedManager.count of <django.db.models.fields.related.RelatedManager object at 0x0000000003592A58>>
+[04/Jul/2013 22:43:58] DEBUG [groups.models:42] <bound method RelatedManager.count of <django.db.models.fields.related.RelatedManager object at 0x0000000003592B70>>
+[04/Jul/2013 22:43:58] DEBUG [groups.models:42] <bound method RelatedManager.count of <django.db.models.fields.related.RelatedManager object at 0x0000000003592F98>>
+[04/Jul/2013 22:43:58] DEBUG [groups.models:42] <bound method RelatedManager.count of <django.db.models.fields.related.RelatedManager object at 0x0000000003592A58>>
+[04/Jul/2013 22:43:58] DEBUG [groups.models:42] <bound method RelatedManager.count of <django.db.models.fields.related.RelatedManager object at 0x0000000003592B70>>
+[04/Jul/2013 22:43:58] DEBUG [groups.models:42] <bound method RelatedManager.count of <django.db.models.fields.related.RelatedManager object at 0x0000000003592F98>>
+[04/Jul/2013 22:44:32] DEBUG [groups.models:42] <django.db.models.fields.related.RelatedManager object at 0x0000000003582A58>
+[04/Jul/2013 22:44:32] DEBUG [groups.models:42] <django.db.models.fields.related.RelatedManager object at 0x0000000003582B70>
+[04/Jul/2013 22:44:32] DEBUG [groups.models:42] <django.db.models.fields.related.RelatedManager object at 0x0000000003582F98>
+[04/Jul/2013 22:44:32] DEBUG [groups.models:42] <django.db.models.fields.related.RelatedManager object at 0x0000000003582A58>
+[04/Jul/2013 22:44:32] DEBUG [groups.models:42] <django.db.models.fields.related.RelatedManager object at 0x0000000003582B70>
+[04/Jul/2013 22:44:32] DEBUG [groups.models:42] <django.db.models.fields.related.RelatedManager object at 0x0000000003582F98>
+[04/Jul/2013 22:44:53] DEBUG [groups.models:42] ['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_copy_to_model', '_db', '_inherited', '_insert', '_set_creation_counter', '_update', 'add', 'aggregate', 'all', 'annotate', 'bulk_create', 'complex_filter', 'contribute_to_class', 'core_filters', 'count', 'create', 'creation_counter', 'dates', 'db', 'db_manager', 'defer', 'distinct', 'exclude', 'exists', 'extra', 'filter', 'get', 'get_empty_query_set', 'get_or_create', 'get_prefetch_query_set', 'get_query_set', 'in_bulk', 'instance', 'iterator', 'latest', 'model', 'none', 'only', 'order_by', 'prefetch_related', 'raw', 'reverse', 'select_for_update', 'select_related', 'update', 'using', 'values', 'values_list']
+[04/Jul/2013 22:44:53] DEBUG [groups.models:42] ['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_copy_to_model', '_db', '_inherited', '_insert', '_set_creation_counter', '_update', 'add', 'aggregate', 'all', 'annotate', 'bulk_create', 'complex_filter', 'contribute_to_class', 'core_filters', 'count', 'create', 'creation_counter', 'dates', 'db', 'db_manager', 'defer', 'distinct', 'exclude', 'exists', 'extra', 'filter', 'get', 'get_empty_query_set', 'get_or_create', 'get_prefetch_query_set', 'get_query_set', 'in_bulk', 'instance', 'iterator', 'latest', 'model', 'none', 'only', 'order_by', 'prefetch_related', 'raw', 'reverse', 'select_for_update', 'select_related', 'update', 'using', 'values', 'values_list']
+[04/Jul/2013 22:44:53] DEBUG [groups.models:42] ['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_copy_to_model', '_db', '_inherited', '_insert', '_set_creation_counter', '_update', 'add', 'aggregate', 'all', 'annotate', 'bulk_create', 'complex_filter', 'contribute_to_class', 'core_filters', 'count', 'create', 'creation_counter', 'dates', 'db', 'db_manager', 'defer', 'distinct', 'exclude', 'exists', 'extra', 'filter', 'get', 'get_empty_query_set', 'get_or_create', 'get_prefetch_query_set', 'get_query_set', 'in_bulk', 'instance', 'iterator', 'latest', 'model', 'none', 'only', 'order_by', 'prefetch_related', 'raw', 'reverse', 'select_for_update', 'select_related', 'update', 'using', 'values', 'values_list']
+[04/Jul/2013 22:44:53] DEBUG [groups.models:42] ['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_copy_to_model', '_db', '_inherited', '_insert', '_set_creation_counter', '_update', 'add', 'aggregate', 'all', 'annotate', 'bulk_create', 'complex_filter', 'contribute_to_class', 'core_filters', 'count', 'create', 'creation_counter', 'dates', 'db', 'db_manager', 'defer', 'distinct', 'exclude', 'exists', 'extra', 'filter', 'get', 'get_empty_query_set', 'get_or_create', 'get_prefetch_query_set', 'get_query_set', 'in_bulk', 'instance', 'iterator', 'latest', 'model', 'none', 'only', 'order_by', 'prefetch_related', 'raw', 'reverse', 'select_for_update', 'select_related', 'update', 'using', 'values', 'values_list']
+[04/Jul/2013 22:44:53] DEBUG [groups.models:42] ['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_copy_to_model', '_db', '_inherited', '_insert', '_set_creation_counter', '_update', 'add', 'aggregate', 'all', 'annotate', 'bulk_create', 'complex_filter', 'contribute_to_class', 'core_filters', 'count', 'create', 'creation_counter', 'dates', 'db', 'db_manager', 'defer', 'distinct', 'exclude', 'exists', 'extra', 'filter', 'get', 'get_empty_query_set', 'get_or_create', 'get_prefetch_query_set', 'get_query_set', 'in_bulk', 'instance', 'iterator', 'latest', 'model', 'none', 'only', 'order_by', 'prefetch_related', 'raw', 'reverse', 'select_for_update', 'select_related', 'update', 'using', 'values', 'values_list']
+[04/Jul/2013 22:44:53] DEBUG [groups.models:42] ['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_copy_to_model', '_db', '_inherited', '_insert', '_set_creation_counter', '_update', 'add', 'aggregate', 'all', 'annotate', 'bulk_create', 'complex_filter', 'contribute_to_class', 'core_filters', 'count', 'create', 'creation_counter', 'dates', 'db', 'db_manager', 'defer', 'distinct', 'exclude', 'exists', 'extra', 'filter', 'get', 'get_empty_query_set', 'get_or_create', 'get_prefetch_query_set', 'get_query_set', 'in_bulk', 'instance', 'iterator', 'latest', 'model', 'none', 'only', 'order_by', 'prefetch_related', 'raw', 'reverse', 'select_for_update', 'select_related', 'update', 'using', 'values', 'values_list']
+[04/Jul/2013 22:46:39] DEBUG [groups.models:42] <bound method RelatedManager.exists of <django.db.models.fields.related.RelatedManager object at 0x0000000003598A58>>
+[04/Jul/2013 22:46:39] DEBUG [groups.models:42] <bound method RelatedManager.exists of <django.db.models.fields.related.RelatedManager object at 0x0000000003598B70>>
+[04/Jul/2013 22:46:39] DEBUG [groups.models:42] <bound method RelatedManager.exists of <django.db.models.fields.related.RelatedManager object at 0x0000000003598F98>>
+[04/Jul/2013 22:46:39] DEBUG [groups.models:42] <bound method RelatedManager.exists of <django.db.models.fields.related.RelatedManager object at 0x0000000003598A58>>
+[04/Jul/2013 22:46:39] DEBUG [groups.models:42] <bound method RelatedManager.exists of <django.db.models.fields.related.RelatedManager object at 0x0000000003598B70>>
+[04/Jul/2013 22:46:39] DEBUG [groups.models:42] <bound method RelatedManager.exists of <django.db.models.fields.related.RelatedManager object at 0x0000000003598F98>>
+[04/Jul/2013 22:47:08] DEBUG [groups.models:42] True
+[04/Jul/2013 22:47:08] DEBUG [groups.models:42] True
+[04/Jul/2013 22:47:08] DEBUG [groups.models:42] False
+[04/Jul/2013 22:47:08] DEBUG [groups.models:42] False
+[04/Jul/2013 22:47:08] DEBUG [groups.models:42] False
+[04/Jul/2013 22:47:08] DEBUG [groups.models:42] False
+[04/Jul/2013 22:47:32] DEBUG [groups.models:42] 4
+[04/Jul/2013 22:47:32] DEBUG [groups.models:42] 1
+[04/Jul/2013 22:47:32] DEBUG [groups.models:42] 0
+[04/Jul/2013 22:47:32] DEBUG [groups.models:42] 0
+[04/Jul/2013 22:47:32] DEBUG [groups.models:42] 0
+[04/Jul/2013 22:47:32] DEBUG [groups.models:42] 0
+[04/Jul/2013 22:59:11] DEBUG [groups.models:47] irs is before:
+[04/Jul/2013 22:59:11] DEBUG [groups.models:49] irs is after:
+[04/Jul/2013 22:59:11] DEBUG [groups.models:47] irs is before:
+[04/Jul/2013 22:59:11] DEBUG [groups.models:49] irs is after:
+[04/Jul/2013 22:59:11] DEBUG [groups.models:47] irs is before:
+[04/Jul/2013 22:59:11] DEBUG [groups.models:49] irs is after:
+[04/Jul/2013 22:59:11] DEBUG [groups.models:47] irs is before:
+[04/Jul/2013 22:59:11] DEBUG [groups.models:49] irs is after:
+[04/Jul/2013 22:59:11] DEBUG [groups.models:47] irs is before:
+[04/Jul/2013 22:59:11] DEBUG [groups.models:49] irs is after:
+[04/Jul/2013 23:04:38] DEBUG [groups.models:47] irs is before:(<GroupDiscussion: First Discussion>,)
+[04/Jul/2013 23:04:38] DEBUG [groups.models:49] irs is after:
+[04/Jul/2013 23:04:38] DEBUG [groups.models:47] irs is before:(<GroupDiscussion: First Discussion>, <GroupDiscussionMessage: 1st message>)
+[04/Jul/2013 23:04:38] DEBUG [groups.models:49] irs is after:
+[04/Jul/2013 23:04:38] DEBUG [groups.models:47] irs is before:(<GroupDiscussion: First Discussion>, <GroupDiscussionMessage: 1st message>, <GroupDiscussionMessage: 2nd message>)
+[04/Jul/2013 23:04:38] DEBUG [groups.models:49] irs is after:
+[04/Jul/2013 23:04:38] DEBUG [groups.models:47] irs is before:(<GroupDiscussion: First Discussion>, <GroupDiscussionMessage: 1st message>, <GroupDiscussionMessage: 2nd message>, <GroupDiscussionMessage: 3rd message>)
+[04/Jul/2013 23:04:38] DEBUG [groups.models:49] irs is after:
+[04/Jul/2013 23:04:38] DEBUG [groups.models:47] irs is before:(<GroupDiscussion: Third Discussion>,)
+[04/Jul/2013 23:04:38] DEBUG [groups.models:49] irs is after:
+[04/Jul/2013 23:10:32] DEBUG [groups.models:46] I am here 1
+[05/Jul/2013 02:03:49] DEBUG [groups.views:82] None
+[05/Jul/2013 02:03:49] DEBUG [groups.views:83] _detail
+[05/Jul/2013 02:03:49] DEBUG [groups.views:84] None
+[05/Jul/2013 02:03:49] DEBUG [groups.views:85] slug
+[05/Jul/2013 02:03:49] DEBUG [groups.views:86] slug
+[05/Jul/2013 02:03:49] DEBUG [groups.views:87] pk
+[19/Jul/2013 18:47:41] DEBUG [groups.views:146] ['COOKIES', 'FILES', 'GET', 'META', 'POST', 'REQUEST', '__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__iter__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_cookies', '_encoding', '_get_cookies', '_get_encoding', '_get_files', '_get_get', '_get_post', '_get_request', '_get_upload_handlers', '_initialize_handlers', '_is_secure', '_load_post_and_files', '_mark_post_parse_error', '_messages', '_post_parse_error', '_read_started', '_set_cookies', '_set_encoding', '_set_get', '_set_post', '_set_upload_handlers', '_stream', '_upload_handlers', 'body', 'build_absolute_uri', 'encoding', 'environ', 'get_full_path', 'get_host', 'get_signed_cookie', 'is_ajax', 'is_secure', 'method', 'parse_file_upload', 'path', 'path_info', 'raw_post_data', 'read', 'readline', 'readlines', 'session', 'upload_handlers', 'user', 'xreadlines']
+[19/Jul/2013 18:48:37] DEBUG [groups.views:146] GET
+[20/Jul/2013 16:51:18] DEBUG [groups.models:26] <bound method Group.get_group_discussions of <Group: Group 1>>
+[20/Jul/2013 16:51:43] DEBUG [groups.models:26] False
+[20/Jul/2013 16:51:58] DEBUG [groups.models:26] False
+[20/Jul/2013 16:51:58] DEBUG [groups.models:28] (1, <GroupDiscussion: First Discussion>)
+[20/Jul/2013 16:51:58] DEBUG [groups.models:28] (3, <GroupDiscussion: Third Discussion>)
+[20/Jul/2013 16:51:58] DEBUG [groups.models:28] (4, <GroupDiscussion: Fourth Discussion>)
+[20/Jul/2013 16:51:58] DEBUG [groups.models:28] (5, <GroupDiscussion: Sixth discussion>)
+[20/Jul/2013 16:51:58] DEBUG [groups.models:28] (6, <GroupDiscussion: 1st Discussion>)
+[20/Jul/2013 16:51:58] DEBUG [groups.models:28] (7, <GroupDiscussion: 1st Discussionsss>)
+[20/Jul/2013 16:52:40] DEBUG [groups.models:26] [(1, <GroupDiscussion: First Discussion>), (3, <GroupDiscussion: Third Discussion>), (4, <GroupDiscussion: Fourth Discussion>), (5, <GroupDiscussion: Sixth discussion>), (6, <GroupDiscussion: 1st Discussion>), (7, <GroupDiscussion: 1st Discussionsss>)]
+[20/Jul/2013 16:52:40] DEBUG [groups.models:28] (1, <GroupDiscussion: First Discussion>)
+[20/Jul/2013 16:52:40] DEBUG [groups.models:28] (3, <GroupDiscussion: Third Discussion>)
+[20/Jul/2013 16:52:40] DEBUG [groups.models:28] (4, <GroupDiscussion: Fourth Discussion>)
+[20/Jul/2013 16:52:40] DEBUG [groups.models:28] (5, <GroupDiscussion: Sixth discussion>)
+[20/Jul/2013 16:52:40] DEBUG [groups.models:28] (6, <GroupDiscussion: 1st Discussion>)
+[20/Jul/2013 16:52:40] DEBUG [groups.models:28] (7, <GroupDiscussion: 1st Discussionsss>)
+[20/Jul/2013 16:55:22] DEBUG [groups.models:28] 1
+[20/Jul/2013 16:55:22] DEBUG [groups.models:28] 3
+[20/Jul/2013 16:55:22] DEBUG [groups.models:28] 4
+[20/Jul/2013 16:55:22] DEBUG [groups.models:28] 5
+[20/Jul/2013 16:55:22] DEBUG [groups.models:28] 6
+[20/Jul/2013 16:55:22] DEBUG [groups.models:28] 7
+[20/Jul/2013 16:56:22] DEBUG [groups.models:28] 1
+[20/Jul/2013 16:56:22] DEBUG [groups.models:29] First Discussion
+[20/Jul/2013 16:56:22] DEBUG [groups.models:28] 3
+[20/Jul/2013 16:56:22] DEBUG [groups.models:29] Third Discussion
+[20/Jul/2013 16:56:22] DEBUG [groups.models:28] 4
+[20/Jul/2013 16:56:22] DEBUG [groups.models:29] Fourth Discussion
+[20/Jul/2013 16:56:22] DEBUG [groups.models:28] 5
+[20/Jul/2013 16:56:22] DEBUG [groups.models:29] Sixth discussion
+[20/Jul/2013 16:56:22] DEBUG [groups.models:28] 6
+[20/Jul/2013 16:56:22] DEBUG [groups.models:29] 1st Discussion
+[20/Jul/2013 16:56:22] DEBUG [groups.models:28] 7
+[20/Jul/2013 16:56:22] DEBUG [groups.models:29] 1st Discussionsss
+[20/Jul/2013 17:00:47] DEBUG [groups.models:28] 1
+[20/Jul/2013 17:00:47] DEBUG [groups.models:29] First Discussion
+[20/Jul/2013 17:00:47] DEBUG [groups.models:28] 3
+[20/Jul/2013 17:00:47] DEBUG [groups.models:29] Third Discussion
+[20/Jul/2013 17:00:47] DEBUG [groups.models:28] 4
+[20/Jul/2013 17:00:47] DEBUG [groups.models:29] Fourth Discussion
+[20/Jul/2013 17:00:47] DEBUG [groups.models:28] 5
+[20/Jul/2013 17:00:47] DEBUG [groups.models:29] Sixth discussion
+[20/Jul/2013 17:00:47] DEBUG [groups.models:28] 6
+[20/Jul/2013 17:00:47] DEBUG [groups.models:29] 1st Discussion
+[20/Jul/2013 17:00:47] DEBUG [groups.models:28] 7
+[20/Jul/2013 17:00:47] DEBUG [groups.models:29] 1st Discussionsss
+[20/Jul/2013 17:01:29] DEBUG [groups.models:28] 1
+[20/Jul/2013 17:01:29] DEBUG [groups.models:29] First Discussion object
+[20/Jul/2013 17:01:29] DEBUG [groups.models:28] 3
+[20/Jul/2013 17:01:29] DEBUG [groups.models:29] Third Discussion object
+[20/Jul/2013 17:01:29] DEBUG [groups.models:28] 4
+[20/Jul/2013 17:01:29] DEBUG [groups.models:29] Fourth Discussion object
+[20/Jul/2013 17:01:29] DEBUG [groups.models:28] 5
+[20/Jul/2013 17:01:29] DEBUG [groups.models:29] Sixth discussion object
+[20/Jul/2013 17:01:29] DEBUG [groups.models:28] 6
+[20/Jul/2013 17:01:29] DEBUG [groups.models:29] 1st Discussion object
+[20/Jul/2013 17:01:29] DEBUG [groups.models:28] 7
+[20/Jul/2013 17:01:29] DEBUG [groups.models:29] 1st Discussionsss object
+[20/Jul/2013 17:11:50] DEBUG [groups.models:29] 0
+[20/Jul/2013 17:11:50] DEBUG [groups.models:29] 1
+[20/Jul/2013 17:11:50] DEBUG [groups.models:29] 2
+[20/Jul/2013 17:11:50] DEBUG [groups.models:29] 3
+[20/Jul/2013 17:11:50] DEBUG [groups.models:29] 4
+[20/Jul/2013 17:11:50] DEBUG [groups.models:29] 5
+[20/Jul/2013 17:12:19] DEBUG [groups.models:29] 0
+[20/Jul/2013 17:12:19] DEBUG [groups.models:30] (1, <GroupDiscussion: First Discussion object>)
+[20/Jul/2013 17:12:19] DEBUG [groups.models:29] 1
+[20/Jul/2013 17:12:19] DEBUG [groups.models:30] (3, <GroupDiscussion: Third Discussion object>)
+[20/Jul/2013 17:12:19] DEBUG [groups.models:29] 2
+[20/Jul/2013 17:12:19] DEBUG [groups.models:30] (4, <GroupDiscussion: Fourth Discussion object>)
+[20/Jul/2013 17:12:19] DEBUG [groups.models:29] 3
+[20/Jul/2013 17:12:19] DEBUG [groups.models:30] (5, <GroupDiscussion: Sixth discussion object>)
+[20/Jul/2013 17:12:19] DEBUG [groups.models:29] 4
+[20/Jul/2013 17:12:19] DEBUG [groups.models:30] (6, <GroupDiscussion: 1st Discussion object>)
+[20/Jul/2013 17:12:19] DEBUG [groups.models:29] 5
+[20/Jul/2013 17:12:19] DEBUG [groups.models:30] (7, <GroupDiscussion: 1st Discussionsss object>)
+[20/Jul/2013 17:16:05] DEBUG [groups.models:32] (1, <GroupDiscussion: First Discussion object>, [<GroupDiscussionMessage: 1st message>, <GroupDiscussionMessage: 2nd message>, <GroupDiscussionMessage: 3rd message>, <GroupDiscussionMessage: fourth Message>])
+[20/Jul/2013 17:16:05] DEBUG [groups.models:32] (3, <GroupDiscussion: Third Discussion object>, [<GroupDiscussionMessage: a different message>])
+[20/Jul/2013 17:16:05] DEBUG [groups.models:32] (4, <GroupDiscussion: Fourth Discussion object>, [])
+[20/Jul/2013 17:16:05] DEBUG [groups.models:32] (5, <GroupDiscussion: Sixth discussion object>, [])
+[20/Jul/2013 17:16:05] DEBUG [groups.models:32] (6, <GroupDiscussion: 1st Discussion object>, [])
+[20/Jul/2013 17:16:05] DEBUG [groups.models:32] (7, <GroupDiscussion: 1st Discussionsss object>, [])
+[20/Jul/2013 17:17:11] DEBUG [groups.models:30] First Discussion object
+[20/Jul/2013 17:17:11] DEBUG [groups.models:33] (1, <GroupDiscussion: First Discussion object>, [<GroupDiscussionMessage: 1st message>, <GroupDiscussionMessage: 2nd message>, <GroupDiscussionMessage: 3rd message>, <GroupDiscussionMessage: fourth Message>])
+[20/Jul/2013 17:17:11] DEBUG [groups.models:30] Third Discussion object
+[20/Jul/2013 17:17:11] DEBUG [groups.models:33] (3, <GroupDiscussion: Third Discussion object>, [<GroupDiscussionMessage: a different message>])
+[20/Jul/2013 17:17:11] DEBUG [groups.models:30] Fourth Discussion object
+[20/Jul/2013 17:17:11] DEBUG [groups.models:33] (4, <GroupDiscussion: Fourth Discussion object>, [])
+[20/Jul/2013 17:17:11] DEBUG [groups.models:30] Sixth discussion object
+[20/Jul/2013 17:17:11] DEBUG [groups.models:33] (5, <GroupDiscussion: Sixth discussion object>, [])
+[20/Jul/2013 17:17:11] DEBUG [groups.models:30] 1st Discussion object
+[20/Jul/2013 17:17:11] DEBUG [groups.models:33] (6, <GroupDiscussion: 1st Discussion object>, [])
+[20/Jul/2013 17:17:11] DEBUG [groups.models:30] 1st Discussionsss object
+[20/Jul/2013 17:17:11] DEBUG [groups.models:33] (7, <GroupDiscussion: 1st Discussionsss object>, [])
+[20/Jul/2013 17:18:39] DEBUG [groups.models:30] First Discussion object
+[20/Jul/2013 17:18:39] DEBUG [groups.models:33] (1, <GroupDiscussion: First Discussion object>, [<GroupDiscussionMessage: 1st message>, <GroupDiscussionMessage: 2nd message>, <GroupDiscussionMessage: 3rd message>, <GroupDiscussionMessage: fourth Message>])
+[20/Jul/2013 17:18:39] DEBUG [groups.models:30] Third Discussion object
+[20/Jul/2013 17:18:39] DEBUG [groups.models:33] (3, <GroupDiscussion: Third Discussion object>, [<GroupDiscussionMessage: a different message>])
+[20/Jul/2013 17:18:39] DEBUG [groups.models:30] Fourth Discussion object
+[20/Jul/2013 17:18:39] DEBUG [groups.models:33] (4, <GroupDiscussion: Fourth Discussion object>, [])
+[20/Jul/2013 17:18:39] DEBUG [groups.models:30] Sixth discussion object
+[20/Jul/2013 17:18:39] DEBUG [groups.models:33] (5, <GroupDiscussion: Sixth discussion object>, [])
+[20/Jul/2013 17:18:39] DEBUG [groups.models:30] 1st Discussion object
+[20/Jul/2013 17:18:39] DEBUG [groups.models:33] (6, <GroupDiscussion: 1st Discussion object>, [])
+[20/Jul/2013 17:18:39] DEBUG [groups.models:30] 1st Discussionsss object
+[20/Jul/2013 17:18:39] DEBUG [groups.models:33] (7, <GroupDiscussion: 1st Discussionsss object>, [])
+[20/Jul/2013 17:19:00] DEBUG [groups.models:30] -------
+[20/Jul/2013 17:19:00] DEBUG [groups.models:31] First Discussion object
+[20/Jul/2013 17:19:00] DEBUG [groups.models:34] (1, <GroupDiscussion: First Discussion object>, [<GroupDiscussionMessage: 1st message>, <GroupDiscussionMessage: 2nd message>, <GroupDiscussionMessage: 3rd message>, <GroupDiscussionMessage: fourth Message>])
+[20/Jul/2013 17:19:00] DEBUG [groups.models:35] -------
+[20/Jul/2013 17:19:00] DEBUG [groups.models:30] -------
+[20/Jul/2013 17:19:00] DEBUG [groups.models:31] Third Discussion object
+[20/Jul/2013 17:19:00] DEBUG [groups.models:34] (3, <GroupDiscussion: Third Discussion object>, [<GroupDiscussionMessage: a different message>])
+[20/Jul/2013 17:19:00] DEBUG [groups.models:35] -------
+[20/Jul/2013 17:19:00] DEBUG [groups.models:30] -------
+[20/Jul/2013 17:19:00] DEBUG [groups.models:31] Fourth Discussion object
+[20/Jul/2013 17:19:00] DEBUG [groups.models:34] (4, <GroupDiscussion: Fourth Discussion object>, [])
+[20/Jul/2013 17:19:00] DEBUG [groups.models:35] -------
+[20/Jul/2013 17:19:00] DEBUG [groups.models:30] -------
+[20/Jul/2013 17:19:00] DEBUG [groups.models:31] Sixth discussion object
+[20/Jul/2013 17:19:00] DEBUG [groups.models:34] (5, <GroupDiscussion: Sixth discussion object>, [])
+[20/Jul/2013 17:19:00] DEBUG [groups.models:35] -------
+[20/Jul/2013 17:19:00] DEBUG [groups.models:30] -------
+[20/Jul/2013 17:19:00] DEBUG [groups.models:31] 1st Discussion object
+[20/Jul/2013 17:19:00] DEBUG [groups.models:34] (6, <GroupDiscussion: 1st Discussion object>, [])
+[20/Jul/2013 17:19:00] DEBUG [groups.models:35] -------
+[20/Jul/2013 17:19:00] DEBUG [groups.models:30] -------
+[20/Jul/2013 17:19:00] DEBUG [groups.models:31] 1st Discussionsss object
+[20/Jul/2013 17:19:00] DEBUG [groups.models:34] (7, <GroupDiscussion: 1st Discussionsss object>, [])
+[20/Jul/2013 17:19:00] DEBUG [groups.models:35] -------
+[20/Jul/2013 17:44:12] DEBUG [groups.models:31] ['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_copy_to_model', '_db', '_inherited', '_insert', '_set_creation_counter', '_update', 'add', 'aggregate', 'all', 'annotate', 'bulk_create', 'complex_filter', 'contribute_to_class', 'core_filters', 'count', 'create', 'creation_counter', 'dates', 'db', 'db_manager', 'defer', 'distinct', 'exclude', 'exists', 'extra', 'filter', 'get', 'get_empty_query_set', 'get_or_create', 'get_prefetch_query_set', 'get_query_set', 'in_bulk', 'instance', 'iterator', 'latest', 'model', 'none', 'only', 'order_by', 'prefetch_related', 'raw', 'reverse', 'select_for_update', 'select_related', 'update', 'using', 'values', 'values_list']
+[20/Jul/2013 17:44:12] DEBUG [groups.models:31] ['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_copy_to_model', '_db', '_inherited', '_insert', '_set_creation_counter', '_update', 'add', 'aggregate', 'all', 'annotate', 'bulk_create', 'complex_filter', 'contribute_to_class', 'core_filters', 'count', 'create', 'creation_counter', 'dates', 'db', 'db_manager', 'defer', 'distinct', 'exclude', 'exists', 'extra', 'filter', 'get', 'get_empty_query_set', 'get_or_create', 'get_prefetch_query_set', 'get_query_set', 'in_bulk', 'instance', 'iterator', 'latest', 'model', 'none', 'only', 'order_by', 'prefetch_related', 'raw', 'reverse', 'select_for_update', 'select_related', 'update', 'using', 'values', 'values_list']
+[20/Jul/2013 17:44:12] DEBUG [groups.models:31] ['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_copy_to_model', '_db', '_inherited', '_insert', '_set_creation_counter', '_update', 'add', 'aggregate', 'all', 'annotate', 'bulk_create', 'complex_filter', 'contribute_to_class', 'core_filters', 'count', 'create', 'creation_counter', 'dates', 'db', 'db_manager', 'defer', 'distinct', 'exclude', 'exists', 'extra', 'filter', 'get', 'get_empty_query_set', 'get_or_create', 'get_prefetch_query_set', 'get_query_set', 'in_bulk', 'instance', 'iterator', 'latest', 'model', 'none', 'only', 'order_by', 'prefetch_related', 'raw', 'reverse', 'select_for_update', 'select_related', 'update', 'using', 'values', 'values_list']
+[20/Jul/2013 17:44:12] DEBUG [groups.models:31] ['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_copy_to_model', '_db', '_inherited', '_insert', '_set_creation_counter', '_update', 'add', 'aggregate', 'all', 'annotate', 'bulk_create', 'complex_filter', 'contribute_to_class', 'core_filters', 'count', 'create', 'creation_counter', 'dates', 'db', 'db_manager', 'defer', 'distinct', 'exclude', 'exists', 'extra', 'filter', 'get', 'get_empty_query_set', 'get_or_create', 'get_prefetch_query_set', 'get_query_set', 'in_bulk', 'instance', 'iterator', 'latest', 'model', 'none', 'only', 'order_by', 'prefetch_related', 'raw', 'reverse', 'select_for_update', 'select_related', 'update', 'using', 'values', 'values_list']
+[20/Jul/2013 17:44:12] DEBUG [groups.models:31] ['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_copy_to_model', '_db', '_inherited', '_insert', '_set_creation_counter', '_update', 'add', 'aggregate', 'all', 'annotate', 'bulk_create', 'complex_filter', 'contribute_to_class', 'core_filters', 'count', 'create', 'creation_counter', 'dates', 'db', 'db_manager', 'defer', 'distinct', 'exclude', 'exists', 'extra', 'filter', 'get', 'get_empty_query_set', 'get_or_create', 'get_prefetch_query_set', 'get_query_set', 'in_bulk', 'instance', 'iterator', 'latest', 'model', 'none', 'only', 'order_by', 'prefetch_related', 'raw', 'reverse', 'select_for_update', 'select_related', 'update', 'using', 'values', 'values_list']
+[20/Jul/2013 17:44:12] DEBUG [groups.models:31] ['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_copy_to_model', '_db', '_inherited', '_insert', '_set_creation_counter', '_update', 'add', 'aggregate', 'all', 'annotate', 'bulk_create', 'complex_filter', 'contribute_to_class', 'core_filters', 'count', 'create', 'creation_counter', 'dates', 'db', 'db_manager', 'defer', 'distinct', 'exclude', 'exists', 'extra', 'filter', 'get', 'get_empty_query_set', 'get_or_create', 'get_prefetch_query_set', 'get_query_set', 'in_bulk', 'instance', 'iterator', 'latest', 'model', 'none', 'only', 'order_by', 'prefetch_related', 'raw', 'reverse', 'select_for_update', 'select_related', 'update', 'using', 'values', 'values_list']
+[20/Jul/2013 17:47:35] DEBUG [groups.models:31] ['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_copy_to_model', '_db', '_inherited', '_insert', '_set_creation_counter', '_update', 'add', 'aggregate', 'all', 'annotate', 'bulk_create', 'complex_filter', 'contribute_to_class', 'core_filters', 'count', 'create', 'creation_counter', 'dates', 'db', 'db_manager', 'defer', 'distinct', 'exclude', 'exists', 'extra', 'filter', 'get', 'get_empty_query_set', 'get_or_create', 'get_prefetch_query_set', 'get_query_set', 'in_bulk', 'instance', 'iterator', 'latest', 'model', 'none', 'only', 'order_by', 'prefetch_related', 'raw', 'reverse', 'select_for_update', 'select_related', 'update', 'using', 'values', 'values_list']
+[20/Jul/2013 17:47:35] DEBUG [groups.models:31] ['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_copy_to_model', '_db', '_inherited', '_insert', '_set_creation_counter', '_update', 'add', 'aggregate', 'all', 'annotate', 'bulk_create', 'complex_filter', 'contribute_to_class', 'core_filters', 'count', 'create', 'creation_counter', 'dates', 'db', 'db_manager', 'defer', 'distinct', 'exclude', 'exists', 'extra', 'filter', 'get', 'get_empty_query_set', 'get_or_create', 'get_prefetch_query_set', 'get_query_set', 'in_bulk', 'instance', 'iterator', 'latest', 'model', 'none', 'only', 'order_by', 'prefetch_related', 'raw', 'reverse', 'select_for_update', 'select_related', 'update', 'using', 'values', 'values_list']
+[20/Jul/2013 17:47:35] DEBUG [groups.models:31] ['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_copy_to_model', '_db', '_inherited', '_insert', '_set_creation_counter', '_update', 'add', 'aggregate', 'all', 'annotate', 'bulk_create', 'complex_filter', 'contribute_to_class', 'core_filters', 'count', 'create', 'creation_counter', 'dates', 'db', 'db_manager', 'defer', 'distinct', 'exclude', 'exists', 'extra', 'filter', 'get', 'get_empty_query_set', 'get_or_create', 'get_prefetch_query_set', 'get_query_set', 'in_bulk', 'instance', 'iterator', 'latest', 'model', 'none', 'only', 'order_by', 'prefetch_related', 'raw', 'reverse', 'select_for_update', 'select_related', 'update', 'using', 'values', 'values_list']
+[20/Jul/2013 17:47:35] DEBUG [groups.models:31] ['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_copy_to_model', '_db', '_inherited', '_insert', '_set_creation_counter', '_update', 'add', 'aggregate', 'all', 'annotate', 'bulk_create', 'complex_filter', 'contribute_to_class', 'core_filters', 'count', 'create', 'creation_counter', 'dates', 'db', 'db_manager', 'defer', 'distinct', 'exclude', 'exists', 'extra', 'filter', 'get', 'get_empty_query_set', 'get_or_create', 'get_prefetch_query_set', 'get_query_set', 'in_bulk', 'instance', 'iterator', 'latest', 'model', 'none', 'only', 'order_by', 'prefetch_related', 'raw', 'reverse', 'select_for_update', 'select_related', 'update', 'using', 'values', 'values_list']
+[20/Jul/2013 17:47:35] DEBUG [groups.models:31] ['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_copy_to_model', '_db', '_inherited', '_insert', '_set_creation_counter', '_update', 'add', 'aggregate', 'all', 'annotate', 'bulk_create', 'complex_filter', 'contribute_to_class', 'core_filters', 'count', 'create', 'creation_counter', 'dates', 'db', 'db_manager', 'defer', 'distinct', 'exclude', 'exists', 'extra', 'filter', 'get', 'get_empty_query_set', 'get_or_create', 'get_prefetch_query_set', 'get_query_set', 'in_bulk', 'instance', 'iterator', 'latest', 'model', 'none', 'only', 'order_by', 'prefetch_related', 'raw', 'reverse', 'select_for_update', 'select_related', 'update', 'using', 'values', 'values_list']
+[20/Jul/2013 17:47:35] DEBUG [groups.models:31] ['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_copy_to_model', '_db', '_inherited', '_insert', '_set_creation_counter', '_update', 'add', 'aggregate', 'all', 'annotate', 'bulk_create', 'complex_filter', 'contribute_to_class', 'core_filters', 'count', 'create', 'creation_counter', 'dates', 'db', 'db_manager', 'defer', 'distinct', 'exclude', 'exists', 'extra', 'filter', 'get', 'get_empty_query_set', 'get_or_create', 'get_prefetch_query_set', 'get_query_set', 'in_bulk', 'instance', 'iterator', 'latest', 'model', 'none', 'only', 'order_by', 'prefetch_related', 'raw', 'reverse', 'select_for_update', 'select_related', 'update', 'using', 'values', 'values_list']
+[20/Jul/2013 17:48:44] DEBUG [groups.models:31] ['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_copy_to_model', '_insert', '_set_creation_counter', '_update', 'add', 'aggregate', 'all', 'annotate', 'bulk_create', 'complex_filter', 'contribute_to_class', 'count', 'create', 'creation_counter', 'dates', 'db', 'db_manager', 'defer', 'distinct', 'exclude', 'exists', 'extra', 'filter', 'get', 'get_empty_query_set', 'get_or_create', 'get_prefetch_query_set', 'get_query_set', 'in_bulk', 'iterator', 'latest', 'none', 'only', 'order_by', 'prefetch_related', 'raw', 'reverse', 'select_for_update', 'select_related', 'update', 'using', 'values', 'values_list']
+[20/Jul/2013 17:48:44] DEBUG [groups.models:31] ['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_copy_to_model', '_insert', '_set_creation_counter', '_update', 'add', 'aggregate', 'all', 'annotate', 'bulk_create', 'complex_filter', 'contribute_to_class', 'count', 'create', 'creation_counter', 'dates', 'db', 'db_manager', 'defer', 'distinct', 'exclude', 'exists', 'extra', 'filter', 'get', 'get_empty_query_set', 'get_or_create', 'get_prefetch_query_set', 'get_query_set', 'in_bulk', 'iterator', 'latest', 'none', 'only', 'order_by', 'prefetch_related', 'raw', 'reverse', 'select_for_update', 'select_related', 'update', 'using', 'values', 'values_list']
+[20/Jul/2013 17:48:44] DEBUG [groups.models:31] ['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_copy_to_model', '_insert', '_set_creation_counter', '_update', 'add', 'aggregate', 'all', 'annotate', 'bulk_create', 'complex_filter', 'contribute_to_class', 'count', 'create', 'creation_counter', 'dates', 'db', 'db_manager', 'defer', 'distinct', 'exclude', 'exists', 'extra', 'filter', 'get', 'get_empty_query_set', 'get_or_create', 'get_prefetch_query_set', 'get_query_set', 'in_bulk', 'iterator', 'latest', 'none', 'only', 'order_by', 'prefetch_related', 'raw', 'reverse', 'select_for_update', 'select_related', 'update', 'using', 'values', 'values_list']
+[20/Jul/2013 17:48:44] DEBUG [groups.models:31] ['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_copy_to_model', '_insert', '_set_creation_counter', '_update', 'add', 'aggregate', 'all', 'annotate', 'bulk_create', 'complex_filter', 'contribute_to_class', 'count', 'create', 'creation_counter', 'dates', 'db', 'db_manager', 'defer', 'distinct', 'exclude', 'exists', 'extra', 'filter', 'get', 'get_empty_query_set', 'get_or_create', 'get_prefetch_query_set', 'get_query_set', 'in_bulk', 'iterator', 'latest', 'none', 'only', 'order_by', 'prefetch_related', 'raw', 'reverse', 'select_for_update', 'select_related', 'update', 'using', 'values', 'values_list']
+[20/Jul/2013 17:48:44] DEBUG [groups.models:31] ['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_copy_to_model', '_insert', '_set_creation_counter', '_update', 'add', 'aggregate', 'all', 'annotate', 'bulk_create', 'complex_filter', 'contribute_to_class', 'count', 'create', 'creation_counter', 'dates', 'db', 'db_manager', 'defer', 'distinct', 'exclude', 'exists', 'extra', 'filter', 'get', 'get_empty_query_set', 'get_or_create', 'get_prefetch_query_set', 'get_query_set', 'in_bulk', 'iterator', 'latest', 'none', 'only', 'order_by', 'prefetch_related', 'raw', 'reverse', 'select_for_update', 'select_related', 'update', 'using', 'values', 'values_list']
+[20/Jul/2013 17:50:31] DEBUG [groups.models:31] ['__call__', '__class__', '__cmp__', '__delattr__', '__doc__', '__format__', '__func__', '__get__', '__getattribute__', '__hash__', '__init__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__self__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'im_class', 'im_func', 'im_self']
+[23/Jul/2013 15:01:04] DEBUG [groups.models:35] <django.db.models.fields.related.RelatedManager object at 0x0000000003894DA0>

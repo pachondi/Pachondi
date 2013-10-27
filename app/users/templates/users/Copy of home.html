@@ -1,0 +1,79 @@
+{% extends "users/base.html" %}
+{% block content %}
+{% load url from future %}
+
+
+<table>
+	<tr><td valign="top" width="200">
+		<b><u>{{user}}</u></b>
+		<br/>
+<b>Your Connections</b>
+{%for conn in connections%}
+<p>
+<a href="{%url 'app.users.views.view_profile' conn.user_slug%}">{{conn}}</a>
+<a href="{%url 'app.users.views.profile'%}">{{conn.name}}</a></p>
+{%endfor%}
+<br/>
+<b>Connection Requests</b>
+{%for conn in connection_requests%}
+<p>
+<a href="{%url 'app.users.views.view_profile' conn.from_user.user_slug%}">{{conn.from_user}}</a><br/>
+<a href="{%url 'app.users.views.confirm_connect' conn.from_user.id%}">accept</a> | <a href="{%url 'app.users.views.decline_connect' conn.from_user.id%}">decline</a>
+</p>
+{%endfor%}
+</td>
+<td valign="top" width="500">
+	<form action="{% url 'app.users.views.add_post' user.id %}" method="post">
+	Update Status:<br/>
+	<textarea name="message" class="textarea" placeholder="Post your status !!!"></textarea><br/>
+	<input type="submit" value="Post" />
+	</form>
+	<br/><br/>
+	<b><u>Recent Posts</u></b>
+	<table>
+	{%for post in posts%}
+	<tr><td width="150" valign="top">
+		<a href="{%url 'app.users.views.view_profile' user.user_slug%}">{{post.user}}</a>
+		</td>
+		<td width="350">{{post.message}}</td></tr>
+		<tr><td></td>
+			<td>
+			{%if post.user.id == user.id%}
+			<a href="{%url 'app.users.views.delete_post' post.id%}">delete</a>
+			{%endif%}
+			<div style="float:right;font-size:11px;color:gray;">{{post.post_dt|display_date_in_words}}</div></td></tr>
+		<tr><td></td>
+			<td>
+				<table width="300">
+			{%for comment in post|comments%} 
+				<tr><td valign="top" width="150">
+				<a href="{%url 'app.users.views.view_profile' comment.comment_by.user_slug%}">{{comment.comment_by}}</a>
+				</td><td>
+				<div>{{comment.message}}</div>
+				<div style="float:left;font-size:11px;color:gray;">{{comment.commented_dt|display_date_in_words}}</div>
+				
+				{%if comment.comment_by.id == user.id%}
+					<a href="{%url 'app.users.views.delete_comment' comment.id%}" style="float:right">delete</a>
+				{%endif%}
+				</td></tr>
+			{%endfor%}
+			</table>
+<br/>
+			<form method="post" action="{% url 'app.users.views.post_comment' post.id %}">
+				{{user}}<br/>
+				<textarea name="comment" placeholder="write a comment"></textarea>
+				<input type="submit" value="comment" />
+			</form>			
+		</td></tr>
+	{%endfor%}
+	</table>
+</td>
+<td valign="top" width="200">
+<b>Connection suggestions</b>
+
+{%for conn in suggested_connections%}
+<p><a href="{%url 'app.users.views.view_profile' conn.user_slug%}"> {{conn}} </a><br/>
+	<a href="{%url 'app.users.views.request_connect' conn.id%}">connect</a></p>  
+{%endfor%}
+</td></tr></table>
+{%endblock%}

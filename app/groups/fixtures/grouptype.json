@@ -1,0 +1,18 @@
+[
+  {
+    "model": "groups.GroupType",
+    "pk": 1,
+    "fields": {
+      "type": "Alumini",
+      "description": "Alumini of members"
+    }
+  },
+  {
+    "model": "groups.GroupType",
+    "pk": 2,
+    "fields": {
+      "type": "Corporate",
+      "description": "members of the same corporate meets here."
+    }
+  }
+]

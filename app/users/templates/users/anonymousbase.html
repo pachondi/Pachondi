@@ -1,0 +1,35 @@
+{% load url from future %}
+<!doctype html>
+<html>
+  <head>
+  	<link rel="stylesheet" href="{{MEDIA_URL}}css/style.css">
+ 
+    <script src="{{STATIC_URL}}js/jquery-1.9.1.min.js"></script>
+    <script src="{{STATIC_URL}}js/underscore-min.js"></script>    
+    <script src="{{STATIC_URL}}js/backbone-min.js"></script>
+    <script>
+      
+    </script>
+    <script src="{{STATIC_URL}}js/app.js"></script>
+
+    <script type="text/html" id="tweetTemplate">
+      <a class="username"><%=username%></a>
+      <p class="message">
+        <%=message%>
+      </p>
+      <abbr class="timestamp"><%=timestamp%></abbr>
+    </script>
+   	<meta name="csrf-token" content="{{csrf_token}}">
+  </head>
+  <body>
+  	<table>
+  		<tr><td><h1>Pachondi</h1></td></tr>
+  		<tr><td>
+  			{% block content %}
+    		{% endblock %}  		
+  		</td>
+  		</tr>
+  	</table>
+    
+  </body>
+</html>

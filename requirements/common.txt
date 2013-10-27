@@ -1,0 +1,10 @@
+Django==1.5.2
+cities-light
+
+
+## requirements/common.txt
+#Django==1.4
+#django-cache-machine==0.6
+#cities-light
+#mptt
+##South==0.7.4 - Need to decide on migration plan

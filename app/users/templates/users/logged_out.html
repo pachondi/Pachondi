@@ -1,0 +1,8 @@
+{% extends "users/base.html" %}
+{% load url from future %}
+{% block content %}
+
+<p>You have been logged out.</p>
+<a href="{% url 'app.users.views.custom_login' %}">Login again</a>
+
+{% endblock %}

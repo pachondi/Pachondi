@@ -1,0 +1,10 @@
+    {{ message }}
+    <ul>
+        {% for discussion in group_discussion_list %}
+         <li>id:{{discussion.id}}, Name:{{discussion.name}}, Description:{{discussion.group.description}}</li>
+        {% endfor %}
+    <ul>    
+ 
+ 	<a href='/group_discussions/new'>Create Discussion</a>
+ 	
+         	 

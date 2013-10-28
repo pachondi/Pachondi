@@ -10,7 +10,7 @@ class GroupManager(SiteManager):
 
 class Group(BaseModel):
     GROUP_TYPE=((1,_('Technical')),(2,_('Corporate')))
-    logo = models.ImageField()
+    #logo = models.ImageField()
     group_name = models.CharField()
     group_type = models.CharField('',GROUP_TYPE)
     summary=models.CharField(max_length=1000)

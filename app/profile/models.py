@@ -22,7 +22,7 @@ class UserProfile(BaseModel):
     user = models.ForeignKey(SiteUser)
     name=models.CharField(_('profile name'), max_length=100)
     display_name = models.CharField(_('Display Name'), max_length=128)
-    profile_photo = models.ImageField(upload_to='profilepic')
+    #profile_photo = models.ImageField(upload_to='profilepic')
     professional_title = models.CharField(_('professional title'), max_length=256)
     about_me = models.CharField(_('about me'), max_length=1000)
     country=models.ForeignKey(Country)

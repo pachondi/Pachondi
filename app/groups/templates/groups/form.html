@@ -1,7 +1,7 @@
 {% extends "users/base.html" %}
 {% block content %}
 {% load url from future %} 
- <form action="{%url 'app.groups.views.create_group'%}" method="post">
+ <form action="{%url 'create-group'%}" method="post">
 	 {% csrf_token %}
   {% for field in form %}
   <p>
@@ -9,6 +9,6 @@
     {{ field.errors }}
   </p>
   {% endfor %}
-  <p><input type="submit" value="Create Profile" /></p>
+  <p><input type="submit" value="Create Group" /></p>
 </form>
 {%endblock%}

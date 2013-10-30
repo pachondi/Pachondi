@@ -4,10 +4,13 @@ import logging
 from django.contrib.auth.decorators import login_required
 from app.users.models import SiteUser
 from django.template.context import RequestContext
+from django.views.generic import DetailView
+from django.views.generic.edit import FormView
+from django.shortcuts import render_to_response, redirect, get_object_or_404
+
 from app.groups.models import Group
 from app.groups.forms import GroupForm
-from django.views.generic import DetailView
-from django.shortcuts import render_to_response, redirect, get_object_or_404
+
 
 log = logging.getLogger(__name__)
 #from django.http import HttpResponse
@@ -24,13 +27,18 @@ def index(request, message=""):
         {'group_list':group_list,'message':message}
     )
 
+
+class GroupView(FormView):
+    template_name = 'groups/form.html'
+    form_class = GroupForm
+
+"""   
 @login_required
-def create_group(request):
+def create(request):
     user=get_object_or_404(SiteUser, id=request.user.id)
     
     if request.method == "POST":            
         form = GroupForm(request.POST)
-        
         if form.is_valid():                            
             opts = {}
             opts['user']=user
@@ -41,7 +49,7 @@ def create_group(request):
         
     return render_to_response('groups/form.html', {'form':form,'user': user}, 
                               context_instance=RequestContext(request)) 
-
+"""
 @login_required
 def show_all_group(request):    
     group_list = Group.objects.filter(_is_active=True)
@@ -158,50 +166,6 @@ def show(request, group_id, message=""):
                 }                   
            )
 
-# GET /groups/new
-@login_required
-def new(request):
-    return render_to_response(
-        'groups/form.html',
-        {
-         'action':'create',
-         'button':'Create'
-        }
-    )
-
-# POST /groups
-@login_required
-def create(request):
-    user=get_object_or_404(SiteUser, id=request.user.id)
-    
-    if request.method == "POST":            
-        form = GroupForm(request.POST)
-        
-        if form.is_valid():                            
-            opts = {}
-            opts['created_by']=user
-            form.save(**opts)        
-            return index(request,"Group Created")
-    else:
-        form = GroupForm()
-        
-    return render_to_response('groups/form.html', {'form':form,'user': user}, 
-                              context_instance=RequestContext(request)) 
-    
-    """
-    group_name = request.POST["name"]
-    group_description = request.POST["description"]
-    group_type = request.POST["type"]
-    group_website = request.POST["group_website"]
-    group = Group(
-                 name = group_name,
-                 description = group_description,
-                 type=group_type,
-                 website=group_website
-            )
-    group.save()
-    return index(request,"Group Created")"""
-
 #GET /groups/:id/edit
 @login_required
 def edit(request,group_id):
@@ -274,6 +238,38 @@ def destroy(request,group_id):
     #return HttpResponse(html)
     
 """
+
+# GET /groups/new
+@login_required
+def new(request):
+    return render_to_response(
+        'groups/form.html',
+        {
+         'action':'create',
+         'button':'Create'
+        }
+    )
+
+# POST /groups
+@login_required
+def create(request):
+    user=get_object_or_404(SiteUser, id=request.user.id)
+    
+    if request.method == "POST":            
+        form = GroupForm(request.POST)
+        
+        if form.is_valid():                            
+            opts = {}
+            opts['created_by']=user
+            form.save(**opts)        
+            return index(request,"Group Created")
+    else:
+        form = GroupForm()
+        
+    return render_to_response('groups/form.html', {'form':form,'user': user}, 
+                              context_instance=RequestContext(request))
+
+
 # GET /groups
   def index
     @groups = Group.all

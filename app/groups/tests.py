@@ -1,16 +1,23 @@
-"""
-This file demonstrates writing tests using the unittest module. These will pass
-when you run "manage.py test".
-
-Replace this with more appropriate tests for your application.
-"""
-
 from django.test import TestCase
+from app.groups.models import Group
+from app.users.models import SiteUser
 
+class GroupTest(TestCase):
+    
+    TEST_USER = 'usera@pachondi.com'
+    TEST_PASSWORD = 'password'
+    
+    def setUp(self):
+        SiteUser.objects.create(email=self.TEST_USER,password=self.TEST_PASSWORD)
+        
+        Group.objects.create(owner = SiteUser.objects.get(email=self.TEST_USER),
+                             group_name='Group A', group_type=2,
+                             summary='A summary', description='A description')
 
-class SimpleTest(TestCase):
-    def test_basic_addition(self):
-        """
-        Tests that 1 + 1 always equals 2.
-        """
-        self.assertEqual(1 + 1, 2)
+        
+    def test_object_created_is_instance_of_group_class(self):
+        #create a SiteUser
+
+        groupA =  Group.objects.get(group_name='Group A')
+        TestCase.assertIsInstance(self, groupA, Group)    
+        

@@ -12,6 +12,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
@@ -19,8 +20,10 @@ DATABASES = {
         # The following settings are not used with sqlite3:
         'USER': 'root',
         'PORT': '',                      # Set to mpty string for default.
-    }
+        #'TEST_NAME': 'pachondi_test'
+    }             
 }
+
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
@@ -158,13 +161,14 @@ INSTALLED_APPS = (
     'cities_light',
     #'relationships',   
     # South for database migrations
-    #'south',    
+    'south',    
     # Uncomment the next line to enable the admin:
     #'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
 
+SOUTH_TESTS_MIGRATE = False
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.

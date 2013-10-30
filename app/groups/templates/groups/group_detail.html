@@ -64,7 +64,7 @@ Set properties for the group items for asynchronous requests
  <div class="message_pane" >
  {% for m in mlist %}
  <div id="div-msg-{{ m.id }}" > 
- <form method="post" action="{% url edit-group-discussion-message m.id %}" >
+ <form method="post" action="{% url 'edit-group-discussion-message' m.id %}" >
  <input type="text" name="belongs_to" value="{{ d }}" ></input>
  <input type="text" name="raw_message" value="{{ m.raw_message }}" ></input>
  <input type="text" name="reply_for" value="{{ m.linked_message }}" ></input>
@@ -76,7 +76,7 @@ Set properties for the group items for asynchronous requests
  </form>  
  </div>
  {% endfor %}
-  <form method="post" action="{% url create-group-discussion-message %}" >
+  <form method="post" action="{% url 'create-group-discussion-message' %}" >
  <input type="hidden" name="belongs_to" value="{{ d }}" ></input>
  <input type="text" name="raw_message" value="Post new message" ></input>
  <input type="hidden" name="context_referrer" value="group" ></input>

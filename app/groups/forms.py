@@ -5,7 +5,7 @@ from app.groups.models import Group, GroupType
 class GroupForm(ModelForm):
     class Meta:
         model = Group
-        exclude = ['created_by']
+        fields = ('group_name','group_type','summary','description')
         #fields = [ field.name for field in Group.get_editable_fields(Group()) ]
         #fields = ["name","description"]
         '''
@@ -17,9 +17,5 @@ class GroupForm(ModelForm):
         
     def save(self,user):
         group = super(GroupForm, self).save(commit=False)        
-        group.name = self.data["name"]
-        group.description = self.data["description"]
-        group.website = self.data["website"]
-        group.type = GroupType.objects.get(pk=self.data["type"])
-        group.created_by=user
+        group.owner=user
         group.save()

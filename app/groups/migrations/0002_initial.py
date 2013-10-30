@@ -8,87 +8,20 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding model 'Group'
-        db.create_table(u'groups_group', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('owner', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['users.SiteUser'])),
-            ('country', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['cities_light.Country'])),
-            ('region', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['cities_light.Region'])),
-            ('language_default', self.gf('django.db.models.fields.CharField')(max_length=100)),
-            ('group_name', self.gf('django.db.models.fields.CharField')(max_length=100)),
-            ('group_type', self.gf('django.db.models.fields.PositiveSmallIntegerField')()),
-            ('summary', self.gf('django.db.models.fields.CharField')(max_length=1000)),
-            ('description', self.gf('django.db.models.fields.CharField')(max_length=2000)),
-            ('website', self.gf('django.db.models.fields.CharField')(max_length=100)),
-            ('auto_approve_domains', self.gf('django.db.models.fields.CharField')(max_length=100)),
-            ('is_auto_join', self.gf('django.db.models.fields.BooleanField')(default=False)),
-            ('is_public', self.gf('django.db.models.fields.BooleanField')(default=False)),
-            ('is_region_specific', self.gf('django.db.models.fields.BooleanField')(default=False)),
-            ('_is_active', self.gf('django.db.models.fields.BooleanField')(default=True)),
-        ))
-        db.send_create_signal(u'groups', ['Group'])
 
-        # Adding model 'GroupMembers'
-        db.create_table(u'groups_groupmembers', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('group', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['groups.Group'])),
-            ('user', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['users.SiteUser'])),
-            ('digest_email_frequency', self.gf('django.db.models.fields.CharField')(max_length=100)),
-            ('announcement_email_frequency', self.gf('django.db.models.fields.CharField')(max_length=100)),
-            ('is_member_moderator', self.gf('django.db.models.fields.BooleanField')(default=False)),
-            ('is_display_in_profile', self.gf('django.db.models.fields.BooleanField')(default=True)),
-            ('is_email_all_discussion', self.gf('django.db.models.fields.BooleanField')(default=False)),
-            ('is_email_digest', self.gf('django.db.models.fields.BooleanField')(default=False)),
-            ('is_announcement_emails', self.gf('django.db.models.fields.BooleanField')(default=False)),
-            ('is_allow_member_messages', self.gf('django.db.models.fields.BooleanField')(default=True)),
-        ))
-        db.send_create_signal(u'groups', ['GroupMembers'])
+        # Changing field 'Group.country'
+        db.alter_column(u'groups_group', 'country_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['cities_light.Country'], null=True))
 
-        # Adding model 'GroupDiscussion'
-        db.create_table(u'groups_groupdiscussion', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=30)),
-            ('group', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['groups.Group'])),
-            ('created_by', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['users.SiteUser'])),
-        ))
-        db.send_create_signal(u'groups', ['GroupDiscussion'])
-
-        # Adding model 'GroupDiscussionMessage'
-        db.create_table(u'groups_groupdiscussionmessage', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('is_active', self.gf('django.db.models.fields.BooleanField')(default=True)),
-            ('raw_message', self.gf('django.db.models.fields.CharField')(max_length=100)),
-            ('group_discussion', self.gf('django.db.models.fields.related.ForeignKey')(related_name='for_group', to=orm['groups.GroupDiscussion'])),
-            ('linked_message', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='for_reply', null=True, to=orm['groups.GroupDiscussionMessage'])),
-        ))
-        db.send_create_signal(u'groups', ['GroupDiscussionMessage'])
-
-        # Adding model 'GroupType'
-        db.create_table(u'groups_grouptype', (
-            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('type', self.gf('django.db.models.fields.CharField')(max_length=30)),
-            ('description', self.gf('django.db.models.fields.CharField')(max_length=1000)),
-            ('is_active', self.gf('django.db.models.fields.BooleanField')(default=True)),
-        ))
-        db.send_create_signal(u'groups', ['GroupType'])
-
+        # Changing field 'Group.region'
+        db.alter_column(u'groups_group', 'region_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['cities_light.Region'], null=True))
 
     def backwards(self, orm):
-        # Deleting model 'Group'
-        db.delete_table(u'groups_group')
 
-        # Deleting model 'GroupMembers'
-        db.delete_table(u'groups_groupmembers')
+        # User chose to not deal with backwards NULL issues for 'Group.country'
+        raise RuntimeError("Cannot reverse this migration. 'Group.country' and its values cannot be restored.")
 
-        # Deleting model 'GroupDiscussion'
-        db.delete_table(u'groups_groupdiscussion')
-
-        # Deleting model 'GroupDiscussionMessage'
-        db.delete_table(u'groups_groupdiscussionmessage')
-
-        # Deleting model 'GroupType'
-        db.delete_table(u'groups_grouptype')
-
+        # User chose to not deal with backwards NULL issues for 'Group.region'
+        raise RuntimeError("Cannot reverse this migration. 'Group.region' and its values cannot be restored.")
 
     models = {
         u'auth.group': {
@@ -140,7 +73,7 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'Group'},
             '_is_active': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'auto_approve_domains': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'country': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['cities_light.Country']"}),
+            'country': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['cities_light.Country']", 'null': 'True'}),
             'description': ('django.db.models.fields.CharField', [], {'max_length': '2000'}),
             'group_name': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'group_type': ('django.db.models.fields.PositiveSmallIntegerField', [], {}),
@@ -150,7 +83,7 @@ class Migration(SchemaMigration):
             'is_region_specific': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'language_default': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'owner': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['users.SiteUser']"}),
-            'region': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['cities_light.Region']"}),
+            'region': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['cities_light.Region']", 'null': 'True'}),
             'summary': ('django.db.models.fields.CharField', [], {'max_length': '1000'}),
             'website': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
@@ -190,6 +123,33 @@ class Migration(SchemaMigration):
             'is_active': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
             'type': ('django.db.models.fields.CharField', [], {'max_length': '30'})
         },
+        u'relationships.relationship': {
+            'Meta': {'ordering': "('created',)", 'unique_together': "(('from_user', 'to_user', 'status', 'site'),)", 'object_name': 'Relationship'},
+            'created': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
+            'from_user': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'from_users'", 'to': u"orm['users.SiteUser']"}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'site': ('django.db.models.fields.related.ForeignKey', [], {'default': '1', 'related_name': "'relationships'", 'to': u"orm['sites.Site']"}),
+            'status': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['relationships.RelationshipStatus']"}),
+            'to_user': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'to_users'", 'to': u"orm['users.SiteUser']"}),
+            'weight': ('django.db.models.fields.FloatField', [], {'default': '1.0', 'null': 'True', 'blank': 'True'})
+        },
+        u'relationships.relationshipstatus': {
+            'Meta': {'ordering': "('name',)", 'object_name': 'RelationshipStatus'},
+            'from_slug': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'login_required': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
+            'private': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+            'symmetrical_slug': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
+            'to_slug': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
+            'verb': ('django.db.models.fields.CharField', [], {'max_length': '100'})
+        },
+        u'sites.site': {
+            'Meta': {'ordering': "('domain',)", 'object_name': 'Site', 'db_table': "'django_site'"},
+            'domain': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
+        },
         u'users.siteuser': {
             'Meta': {'object_name': 'SiteUser'},
             'created_date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
@@ -210,6 +170,7 @@ class Migration(SchemaMigration):
             'lock_expires_on': ('django.db.models.fields.DateTimeField', [], {'null': 'True'}),
             'modified_date': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
             'password': ('django.db.models.fields.CharField', [], {'max_length': '128'}),
+            'relationships': ('django.db.models.fields.related.ManyToManyField', [], {'related_name': "'related_to'", 'symmetrical': 'False', 'through': u"orm['relationships.Relationship']", 'to': u"orm['users.SiteUser']"}),
             'user_permissions': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['auth.Permission']", 'symmetrical': 'False', 'blank': 'True'}),
             'user_slug': ('django.db.models.fields.CharField', [], {'max_length': '128'}),
             'website': ('django.db.models.fields.CharField', [], {'max_length': '256'})

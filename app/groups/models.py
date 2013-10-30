@@ -15,19 +15,19 @@ class GroupManager(SiteManager):
 class Group(BaseModel):
     GROUP_TYPE=((1,_('Technical')),(2,_('Corporate')))
     #logo = models.ImageField(upload_to='groupimg')
+    owner=models.ForeignKey(SiteUser,null=False)
+    country=models.ForeignKey(Country,null=True)
+    region=models.ForeignKey(Region,null=True) #should be zipcode
+    language_default=models.CharField(max_length=100)
     group_name = models.CharField(max_length=100)
     group_type = models.PositiveSmallIntegerField(_('group type'), choices=GROUP_TYPE)
     summary=models.CharField(max_length=1000)
     description=models.CharField(max_length=2000)
     website=models.CharField(max_length=100)
-    owner=models.ForeignKey(SiteUser)
+    auto_approve_domains=models.CharField(max_length=100) #domains seperated by semicolon(;)
     is_auto_join=models.BooleanField(default=False)
     is_public=models.BooleanField(default=False)
-    auto_approve_domains=models.CharField(max_length=100) #domains seperated by semicolon(;)
-    language=models.CharField(max_length=100)
     is_region_specific=models.BooleanField(default=False)
-    country=models.ForeignKey(Country)
-    region=models.ForeignKey(Region)
     _is_active = models.BooleanField(default=True)
     #is_twitter_announcement
     
@@ -113,12 +113,13 @@ class Group(BaseModel):
 class GroupMembers(BaseModel):
     group = models.ForeignKey(Group)
     user = models.ForeignKey(SiteUser)
-    is_display_in_profile=models.BooleanField(default=True)
-    is_email_all_discussion = models.BooleanField(default=True)
-    is_email_digest=models.BooleanField(default=True)
     digest_email_frequency=models.CharField(max_length=100)#Daily, Weekly, Monthly
-    is_announcement_emails=models.BooleanField(default=True)
     announcement_email_frequency=models.CharField(max_length=100)#Daily, Weekly, Monthly
+    is_member_moderator=models.BooleanField(default=False)
+    is_display_in_profile=models.BooleanField(default=True)
+    is_email_all_discussion = models.BooleanField(default=False)
+    is_email_digest=models.BooleanField(default=False)
+    is_announcement_emails=models.BooleanField(default=False)
     is_allow_member_messages=models.BooleanField(_('Allow members of this group to send me messages'),default=True)
     
 class GroupDiscussion(Discussion):

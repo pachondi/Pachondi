@@ -1,12 +1,13 @@
 from django.conf.urls import patterns
 from django.contrib.auth.decorators import login_required
-from app.groups.views import GroupCreate, GroupUpdate
+from app.groups.views import GroupCreateView, GroupUpdateView
 
-
+#http://www.wellfireinteractive.com/blog/fast-and-beautiful-urls-with-django/
 urlpatterns = patterns('app.groups.views',
                        (r'^$','show_all',None,'show-group-all'), # show all group
-                       (r'^create$',login_required(GroupCreate.as_view()),None,'group-create'),
-                       (r'^(?P<pk>\d+)/edit',login_required(GroupUpdate.as_view()),None,'group-update'),
+                       (r'^create$',login_required(GroupCreateView.as_view()),None,'group-create'),
+                       (r'^(?P<pk>\d+)/edit$',login_required(GroupUpdateView.as_view()),None,'group-update'),
+                       #(r'^(?P<pk>\d+)/edito$',login_required(GroupSettingsUpdateView.as_view()),None,'group-update'),                       
                        (r'^(?P<group_id>\d+)','show_group',None,'group-show'),
                        )
 

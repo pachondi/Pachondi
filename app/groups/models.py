@@ -1,11 +1,14 @@
 import logging
 from django.db import models
+from django.db.models.signals import post_save
+from django.utils.translation import ugettext as _
+
+
 from app.users.models import SiteUser
 from Pachondi.libs.discussions.models import Discussion
 from Pachondi.libs.message.models import Message
 from Pachondi.core.modelbase.models import BaseModel, SiteManager
 from cities_light.models import Country, Region
-from django.utils.translation import ugettext as _
 
 log = logging.getLogger(__name__)
 
@@ -16,11 +19,11 @@ class Group(BaseModel):
     GROUP_TYPE=((1,_('Technical')),(2,_('Corporate')))
     #logo = models.ImageField(upload_to='groupimg')
     owner=models.ForeignKey(SiteUser,null=False)
-    country=models.ForeignKey(Country,null=True)
+    country=models.ForeignKey(Country,null=True,blank=True)
     region=models.ForeignKey(Region,null=True) #should be zipcode
     language_default=models.CharField(max_length=100)
-    group_name = models.CharField(max_length=100)
-    group_type = models.PositiveSmallIntegerField(_('group type'), choices=GROUP_TYPE)
+    name = models.CharField(max_length=100)
+    type = models.PositiveSmallIntegerField(_('group type'), choices=GROUP_TYPE)
     summary=models.CharField(max_length=1000)
     description=models.CharField(max_length=2000)
     website=models.CharField(max_length=100)
@@ -29,7 +32,9 @@ class Group(BaseModel):
     is_public=models.BooleanField(default=False)
     is_region_specific=models.BooleanField(default=False)
     _is_active = models.BooleanField(default=True)
+    _is_official = models.BooleanField(default=False)
     #is_twitter_announcement
+    #_is_official
     
     def get_object_data(self):
         return dict([(field.name,self._get_FIELD_display(field)) for field in self.__class__._meta.fields])
@@ -92,6 +97,8 @@ class Group(BaseModel):
         return rs
         
         #return [(gd_msgs.id,gd_msgs.raw_message,gd_msgs.group_discussion) for gd_msgs in self.groupdiscussion_set.groupdiscussionmessage_set.all()]
+    
+    
     @models.permalink
     def get_absolute_url(self):
         return ('group-show', [str(self.id)])   
@@ -109,13 +116,36 @@ class Group(BaseModel):
             pass
 
 
-    
-class GroupMembers(BaseModel):
+def init_groupmember_after_group_create(sender, instance, created, **kwargs):
+    """
+    A signal to automatically put an entry into GroupMember model
+    as soon as a user creates a group. Unable to handle such a 
+    situation in view for now as I do not know how to obtain
+    a lazy object for group. Even then, handling business logic
+    at model level makes sense
+    """
+    if created:
+        groupmember = GroupMember.objects.create(group=instance,
+                                                   user=SiteUser.objects.get(id=instance.owner.id),
+                                                   is_member_moderator = True, #a owner is automatically a mod
+                                                   is_member_owner = True
+                                                   )
+        
+        groupmember.save()
+
+"""
+if sender not sent, the signal will fire for every save 
+and instance.attribute won't be available properly
+"""        
+post_save.connect(init_groupmember_after_group_create, sender=Group)    
+
+class GroupMember(BaseModel):
     group = models.ForeignKey(Group)
     user = models.ForeignKey(SiteUser)
     digest_email_frequency=models.CharField(max_length=100)#Daily, Weekly, Monthly
     announcement_email_frequency=models.CharField(max_length=100)#Daily, Weekly, Monthly
     is_member_moderator=models.BooleanField(default=False)
+    is_member_owner=models.BooleanField(default=False)
     is_display_in_profile=models.BooleanField(default=True)
     is_email_all_discussion = models.BooleanField(default=False)
     is_email_digest=models.BooleanField(default=False)

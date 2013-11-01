@@ -1,0 +1,16 @@
+{% extends "users/base.html" %}
+{% block content %}
+{% load url from future %}
+
+ <form action="{% url 'group-update' group.id %}" method="post">
+	 {% csrf_token %}
+  {% for field in form %}
+  <p>
+    {{ field.label_tag }}: {{ field }}
+    {{ field.errors }}
+  </p>
+  <input type="hidden" id="hidden_field_mode" name="hidden_field_name" value="edit" />
+  {% endfor %}
+  <p><input type="submit" value="Update Group" /></p>
+</form>
+{%endblock%}

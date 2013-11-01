@@ -94,7 +94,7 @@ class Group(BaseModel):
         #return [(gd_msgs.id,gd_msgs.raw_message,gd_msgs.group_discussion) for gd_msgs in self.groupdiscussion_set.groupdiscussionmessage_set.all()]
     @models.permalink
     def get_absolute_url(self):
-        return ('show-group', [str(self.id)])   
+        return ('group-show', [str(self.id)])   
         
     def __unicode__(self):
         return self.name + " object"

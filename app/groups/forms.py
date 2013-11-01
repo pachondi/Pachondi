@@ -1,11 +1,12 @@
 from django.forms import ModelForm
 from app.groups.models import Group, GroupType
 
-
+#http://stackoverflow.com/questions/6069070/how-to-use-permission-required-decorators-on-django-class-based-views
 class GroupForm(ModelForm):
     class Meta:
         model = Group
-        fields = ('group_name','group_type','summary','description')
+        fields = ['group_name','group_type','summary',
+                  'description']
         #fields = [ field.name for field in Group.get_editable_fields(Group()) ]
         #fields = ["name","description"]
         '''
@@ -15,7 +16,9 @@ class GroupForm(ModelForm):
          from the model via ModelForm will not include that field.
         '''
         
-    def save(self,user):
-        group = super(GroupForm, self).save(commit=False)        
-        group.owner=user
-        group.save()
+class GroupAdminSettingsForm(ModelForm):
+    class Meta:
+        model = Group
+        fields = ['owner','language_default','group_type',
+                  'auto_approve_domains','is_auto_join',
+                  'is_public','is_region_specific']

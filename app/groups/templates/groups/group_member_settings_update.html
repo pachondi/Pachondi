@@ -1,0 +1,16 @@
+{% extends "users/base.html" %}
+{% block content %}
+{% load url from future %}
+<div>
+{{ object }} {{ groupmember }}
+<h3> Group Member settings </h3>
+<form action="{% url 'group-member-settings-update' groupmember.id %}" method="post">
+{{ form }}
+<input type="text" name="member_user" value="{{groupmember.user.id}}" />
+<input type="text" name="member_group" value="{{groupmember.group.id}}" />
+<input type="text" name="member_is_admin" value="{{groupmember.is_member_moderator}}" />
+<input type="text" name="member_is_owner" value="{{groupmember.is_member_owner}}" />
+<p><input type="submit" value="Update" /></p>
+</form>
+</div>
+{% endblock %}

@@ -3,7 +3,6 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext as _
 
-
 from app.users.models import SiteUser
 from Pachondi.libs.discussions.models import Discussion
 from Pachondi.libs.message.models import Message
@@ -18,16 +17,16 @@ class GroupManager(SiteManager):
 class Group(BaseModel):
     GROUP_TYPE=((1,_('Technical')),(2,_('Corporate')))
     #logo = models.ImageField(upload_to='groupimg')
-    owner=models.ForeignKey(SiteUser,null=False)
-    country=models.ForeignKey(Country,null=True,blank=True)
-    region=models.ForeignKey(Region,null=True) #should be zipcode
-    language_default=models.CharField(max_length=100)
     name = models.CharField(max_length=100)
     type = models.PositiveSmallIntegerField(_('group type'), choices=GROUP_TYPE)
     summary=models.CharField(max_length=1000)
     description=models.CharField(max_length=2000)
-    website=models.CharField(max_length=100)
-    auto_approve_domains=models.CharField(max_length=100) #domains seperated by semicolon(;)
+    language_default=models.CharField(max_length=100,blank=True)
+    owner=models.ForeignKey(SiteUser,null=False)
+    country=models.ForeignKey(Country,null=True,blank=True)
+    region=models.ForeignKey(Region,null=True,blank=True) #should be zipcode
+    website=models.CharField(max_length=100,blank=True)
+    auto_approve_domains=models.CharField(max_length=100,blank=True) #domains seperated by semicolon(;)
     is_auto_join=models.BooleanField(default=False)
     is_public=models.BooleanField(default=False)
     is_region_specific=models.BooleanField(default=False)
@@ -140,10 +139,10 @@ and instance.attribute won't be available properly
 post_save.connect(init_groupmember_after_group_create, sender=Group)    
 
 class GroupMember(BaseModel):
-    group = models.ForeignKey(Group)
-    user = models.ForeignKey(SiteUser)
-    digest_email_frequency=models.CharField(max_length=100)#Daily, Weekly, Monthly
-    announcement_email_frequency=models.CharField(max_length=100)#Daily, Weekly, Monthly
+    group = models.ForeignKey(Group, editable=False)
+    user = models.ForeignKey(SiteUser, editable=False)
+    digest_email_frequency=models.CharField(max_length=100, blank=True)#Daily, Weekly, Monthly
+    announcement_email_frequency=models.CharField(max_length=100, blank=True)#Daily, Weekly, Monthly
     is_member_moderator=models.BooleanField(default=False)
     is_member_owner=models.BooleanField(default=False)
     is_display_in_profile=models.BooleanField(default=True)
@@ -174,7 +173,7 @@ class GroupDiscussion(Discussion):
         
      
 class GroupDiscussionMessage(Message):
-    raw_message = models.CharField(max_length=100)
+    raw_message = models.CharField(max_length=100,blank=True)
     group_discussion = models.ForeignKey(GroupDiscussion, related_name="for_group")
     linked_message = models.ForeignKey('self',related_name="for_reply",null=True,blank=True)
     

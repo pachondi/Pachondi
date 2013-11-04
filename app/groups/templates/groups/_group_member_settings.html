@@ -1,0 +1,13 @@
+{% block group_member_settings %}
+
+<div>
+<h3> Group Member settings </h3>
+{% with formobj=group_member_settings_form %}
+{{ formobj }}
+{% endwith %}
+<form method="get" action="{% url 'group-member-settings-update' group_member_settings_form.instance.id %}" style='border:1px solid black;'>
+<p><input type="submit" value="Update Membership Settings" /></p>
+</form>
+</div>
+<hr/>
+{% endblock %}

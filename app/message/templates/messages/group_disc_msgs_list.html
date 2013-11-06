@@ -1,0 +1,10 @@
+    {{ message }}
+    <ul>
+        {% for disc_msg in group_disc_msgs_list %}
+         <li>id:{{disc_msg.id}}, Message:{{disc_msg.raw_message}}, Discussion: {{ disc_msg.group_discussion }}</li>
+        {% endfor %}
+    <ul>    
+ 
+ 	<a href='{% url new-group-discussion-message%}'>Create Discussion</a>
+ 	
+         	 

@@ -1,0 +1,18 @@
+  
+ {% if belongs_to %}
+ 	This Discussion belongs to a {% firstof belongs_to "Group" %}, whose primary key is {{ belongs_to|escape }} <br/> 
+ {% else %}
+ 	This Discussion is an orphan.
+ {% endif %}		
+ 
+<form action='{{ action_url }}' method='post'>
+	Discussion Name:
+	<input name='name' value="{% firstof discussion_name 'Discusssion topic...'  %}" />
+	Discussion belongs to Group {% firstof belongs_to|escape None %}:
+	<input type="hidden" name='belongs_to' value="{{ belongs_to|escape }}" />
+	{% if context_referrer %}
+	<input type="hidden" name="context_referrer" value="{{ context_referrer }}" ></input>
+ 	<input type="hidden" name="context_referrer_id" value="{{ context_referrer_id }}" ></input>
+	{% endif %}
+	<input type="submit" value="{{button}}" >
+</form>

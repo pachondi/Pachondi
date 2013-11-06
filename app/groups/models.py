@@ -4,8 +4,8 @@ from django.db.models.signals import post_save
 from django.utils.translation import ugettext as _
 
 from app.users.models import SiteUser
-from Pachondi.libs.discussions.models import Discussion
-from Pachondi.libs.message.models import Message
+from app.discussions.models import Discussion
+from app.message.models import Message
 from Pachondi.core.modelbase.models import BaseModel, SiteManager
 from cities_light.models import Country, Region
 

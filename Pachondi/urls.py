@@ -23,11 +23,11 @@ urlpatterns += patterns('',
 )
 
 urlpatterns += patterns('',
-                        url(r'^group_discussions/', include('Pachondi.libs.discussions.urls')),                       
+                        url(r'^group_discussions/', include('app.discussions.urls')),                       
 
 )
 
-urlpatterns += patterns('Pachondi.libs.message.views',
+urlpatterns += patterns('app.message.views',
                         (r'group_discussion_messages/$','index'),
                         (r'group_discussion_messages/new$','new',None,'new-group-discussion-message'),
                         (r'group_discussion_messages/create/$','create',None,'create-group-discussion-message'),

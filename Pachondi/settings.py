@@ -153,8 +153,8 @@ INSTALLED_APPS = (
     # All user created apps
     'Pachondi.core.modelbase',
     #'Pachondi.core.models',
-    'Pachondi.libs.discussions',
-    'Pachondi.libs.message',    
+    'app.discussions',
+    'app.message',    
     'app.users',
     'app.users.authentication',
     'app.users.registration', 

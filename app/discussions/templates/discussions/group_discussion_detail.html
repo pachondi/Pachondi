@@ -1,0 +1,6 @@
+{% for message in gd.for_group.all %}
+    -{{ message.raw_message }} ({{ message.id }}) --> ({{message.linked_message}})<br/>
+    {% for reply in message.for_reply.all %}
+     ---   {{ reply.raw_message }} ({{ reply.id }}) --> ({{reply.linked_message}})<br/>
+    {% endfor %}
+ {% endfor %}

@@ -20,13 +20,3 @@ class Company(BaseModel):
     created_date = models.DateTimeField(_('account created date'), default=timezone.now)
     modified_date = models.DateTimeField(_('account modified date'), default=timezone.now)
 
-class UserCompany(BaseModel):
-    user = models.ForeignKey(SiteUser)
-    company = models.ForeignKey(Company)
-    company_name = models.CharField(max_length=100)
-    #Location
-    industry=models.CharField(max_length=100)
-    position = models.ForeignKey(Position)
-    position_name = models.CharField(max_length=100)
-    worked_from=models.DateField()
-    worked_to=models.DateField()

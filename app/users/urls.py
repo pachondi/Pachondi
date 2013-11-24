@@ -28,18 +28,23 @@ urlpatterns = patterns('app.users.authentication',
                             LogoutView.as_view(), 
                             name='logout_view'),    
 )
-urlpatterns += patterns('app.users.registration',
+urlpatterns += patterns('app.users.registration.views',
                         url('^register', 
                             RegistrationView.as_view(form_class=RegistrationForm),
                             {'template_name': 'users/register.html'}, 
                             name='register_view'),
                         
-                        url('^confirm/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$', 
+                        url('^register/action', 
+                            'perform_action',
+                            {'template_name': 'step1.html'}, 
+                            name='register_action'),
+                        
+                        url('^confirm/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)$', 
                             ConfirmEmailView.as_view(), 
                             name='signup_confirm'),
 )
 urlpatterns += patterns('app.users.settings',
-                        url(r'^settings/$', 
+                        url(r'^settings$', 
                         settings, 
                         {'template_name': 'users/settings.html'}),       
 )
@@ -55,9 +60,9 @@ urlpatterns += patterns('app.users.posts',
 )
 
 urlpatterns += patterns('app.users.views',
-                       (r'^$', index,{'template_name': 'users/index.html'}),
+                       (r'^index$', index,{'template_name': 'users/index.html'}),
                        
-                       (r'^home/$', home,{'template_name': 'users/home.html'}),             
+                       (r'^home$', home,{'template_name': 'users/home.html'}),             
                        
                        #(r'^api/', include(siteuser_resource.urls)),
 )

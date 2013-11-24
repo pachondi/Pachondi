@@ -1,0 +1,24 @@
+{% load url from future %}
+
+<div id="signup">
+	<h3>What are you doing currently?</h3>	
+<form action="{% url 'register_action'%}" method="post">
+	{% csrf_token %}
+	<table>	  
+	  <tr>
+	  	<td>
+	     <input id="id_current_status" name="current_status" type="radio" value="E" /> Self Employed
+	     <input id="id_current_status" name="current_status" type="radio" value="W" /> Working
+	     <input id="id_current_status" name="current_status" type="radio" value="S" /> Student 
+	    </td>
+	    <td>
+	    	 {{ field }}
+	    </td>
+	    <td>
+	    	{{ field.errors }}
+	    </td>
+	  </tr>	  
+	  </table>
+  <p><input type="submit" value="Signup" id="btanSignup" /></p>
+</form>
+</div>

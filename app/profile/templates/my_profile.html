@@ -20,10 +20,6 @@
 			<p><b>professional_title:</b>{{profile.professional_title}}</p>
 			<p><b>about_me:</b>{{profile.about_me}}</p>
 			<p><b>region:</b>{{profile.region}}</p>
-			
-			{%if add_user%}
-		<a href="{%url 'app.relationships.views.request_connect' user.id%}">connect</a>
-		{%endif%}
 	</div>
 </div>
 </div>
@@ -40,7 +36,8 @@
 		<p><b>Company name:</b>{{company.company_name}}</p>
 		<p><b>Industry:</b>{{company.industry}}</p>
 		<p><b>Position Name:</b>{{company.position_name}}</p>
-		<p><b>Period:</b>{{company.worked_from}} to {{company.worked_to}}</p>		
+		<p><b>Period:</b>{{company.worked_from}} to {{company.worked_to}}</p>
+		<input type="submit" value="Edit" />
 		</form>
 	{% endfor %}
 </div>	

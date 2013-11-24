@@ -6,7 +6,6 @@ from django.db.models.fields.related import create_many_related_manager, ManyToM
 from django.utils.translation import ugettext_lazy as _
 from Pachondi.core.modelbase.models import BaseModel
 from app.users.models import SiteUserManager, SiteUser
-from django.utils.datetime_safe import datetime
 
 
 class RelationshipStatusManager(SiteManager):
@@ -72,8 +71,8 @@ class Relationship(BaseModel):
 
     def __unicode__(self):
         return (_('Relationship from %(from_user)s to %(to_user)s')
-                % { 'from_user': self.from_user.username,
-                    'to_user': self.to_user.username})
+                % { 'from_user': self.from_user.get_full_name(),
+                    'to_user': self.to_user.get_full_name()})
 
 field = models.ManyToManyField(SiteUser, through=Relationship, 
                                symmetrical=False, related_name='related_to')

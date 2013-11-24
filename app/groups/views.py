@@ -1,5 +1,3 @@
-# Create your views here.
-
 import logging
 from django.contrib.auth.decorators import login_required
 from app.users.models import SiteUser

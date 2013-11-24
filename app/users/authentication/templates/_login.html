@@ -1,24 +1,26 @@
 
-<h3>Login</h3>
+
 {% if form.errors %}
 <p>Authentication error</p>
 {% endif %}
 <form method="post" action="{% url 'login_view' %}">
   {% csrf_token %}
-  <table>
+  	<table id="login">
             <tr>
-                <td>{{ form.email.label_tag }}</td>                            
-                <td>{{ form.password.label_tag }}</td>                
+                <th>{{ form.email.label_tag }}</th>                            
+                <th>{{ form.password.label_tag }}</th>
+				<th></th>                                
             </tr>
             <tr>
             	<td>{{ form.email }}</td>
             	<td>{{ form.password }}</td>
+            	<td rowspan="3" valign="center"><input type="submit" value="Login"/></td>
             </tr>
             <tr>
             	<td><label><input name="remember_me" type="checkbox">Keep me logged in</label></td>
             	<td><a href="{% url 'django.contrib.auth.views.password_reset' %}">Forgot password?</a></td>
-            </tr>
+			</tr>            	            
    </table>
-  <p><input type="submit" value="Login" /></p>
+  
   <input type="hidden" name="next" value="{{ next }}" />
 </form>

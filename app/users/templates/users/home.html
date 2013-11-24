@@ -3,19 +3,39 @@
 {% load url from future %}
 {% load post_tags %}
 
+<div id="weekly-features" class="shadowed">
+<div class="inner-boundary">
+	<div class="inner-border">
+		<h3 class="decorator">Status</h3>
+		<div class="slider">
+			<form action="{% url 'app.users.posts.views.add_post' user.id %}" method="post">	
+			<textarea name="message" class="textarea" placeholder="Post your status !!!"></textarea><br/>
+			<input type="submit" value="Post" />
+			</form>
+		</div>
+	</div>
+</div>
+</div>
 
 
-<table>
-	<tr><td valign="top" width="200">
-		<b><u>{{user}}</u></b>
-		<br/>
-<b>Your Connections</b>
-{%for conn in connections%}
+<div id="network-activity" class="shadowed">
+<div class="inner-boundary">
+<div class="inner-border">
+<div class="thumbnail itemcontainer">
+<a href="/item/ime-portfolio-web-app/2918523?WT.ac=free_file&WT.seg_1=free_file&WT.z_author=theunexpected1">
+</div>
+<h3 class="decorator">
+<a href="#">Network Activity</a>
+</h3>
+<b>Connections</b>
 <p>
+{%for conn in connections%}
 <a href="{%url 'app.profile.views.view_profile' conn.user_slug%}">{{conn}}</a>
 <a href="{%url 'app.profile.views.profile'%}">{{conn.name}}</a></p>
 {%endfor%}
-<br/>
+
+
+{%if connection_requests%}
 <b>Connection Requests</b>
 {%for conn in connection_requests%}
 <p>
@@ -23,19 +43,25 @@
 <a href="{%url 'app.relationships.views.accept_connect' conn.id%}">accept</a> | <a href="{%url 'app.relationships.views.decline_connect' conn.id%}">decline</a>
 </p>
 {%endfor%}
-</td>
-<td valign="top" width="500">
-	<form action="{% url 'app.users.posts.views.add_post' user.id %}" method="post">
-	Update Status:<br/>
-	<textarea name="message" class="textarea" placeholder="Post your status !!!"></textarea><br/>
-	<input type="submit" value="Post" />
-	</form>
-	<br/><br/>
-	<b><u>Recent Posts</u></b>
-	<table>
+{%endif%}
+
+<b>Connection suggestions</b>
+{%for conn in suggested_connections%}
+<p><a href="{%url 'app.profile.views.view_profile' conn.user_slug%}"> {{conn}} </a><br/>
+	<a href="{%url 'app.relationships.views.request_connect' conn.id%}">connect</a></p>  
+{%endfor%}
+</div>
+</div>
+</div>
+
+{%if posts%}
+<div id="friends-updates" class="shadowed">
+<div class="inner-boundary">
+	<div class="inner-border">
+<table>
 	{%for post in posts%}
 	<tr><td width="150" valign="top">
-		<a href="{%url 'app.profile.views.view_profile' user.user_slug%}">{{post.user}}</a>
+		<a href="{%url 'app.profile.views.view_profile' post.user.user_slug%}">{{post.user}}</a>
 		</td>
 		<td width="350">{{post.message}}</td></tr>
 		<tr><td></td>
@@ -69,13 +95,9 @@
 		</td></tr>
 	{%endfor%}
 	</table>
-</td>
-<td valign="top" width="200">
-<b>Connection suggestions</b>
+</div>
+</div>
+</div>
+{%endif%}
 
-{%for conn in suggested_connections%}
-<p><a href="{%url 'app.profile.views.view_profile' conn.user_slug%}"> {{conn}} </a><br/>
-	<a href="{%url 'app.relationships.views.request_connect' conn.id%}">connect</a></p>  
-{%endfor%}
-</td></tr></table>
 {%endblock%}

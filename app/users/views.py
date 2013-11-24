@@ -14,7 +14,7 @@ def index(request, template_name = 'index.html',
           signup_form = RegistrationForm,
           **kwargs):
     if request.user.is_authenticated():
-        return redirect('/users/home', **kwargs)    
+        return redirect('/users/home', **kwargs)
     
     return render_to_response(template_name, 
                                {'login_form' : login_form, 'signup_form' : signup_form},

@@ -27,6 +27,7 @@ class SiteUserManager(BaseUserManager):
         u.save(using=self._db)
         return u
 
+
  
  
 class SiteUser(AbstractBaseUser, PermissionsMixin):
@@ -40,7 +41,7 @@ class SiteUser(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(_('First Name'), max_length=128, error_messages={'blank':_("First name cannot be empty")})
     last_name = models.CharField(max_length=128, null=True)
     user_slug = models.CharField(max_length=128)
-    dob=models.DateField(_('Date of birth'), default=timezone.now())
+    dob=models.DateField(_('Date of birth'))
     website=models.CharField(_('Website'), max_length=256)
     is_active = models.BooleanField(default=True)
     is_verified = models.BooleanField(default=False)
@@ -98,7 +99,7 @@ class SiteUser(AbstractBaseUser, PermissionsMixin):
         """
         send_mail(subject, message, from_email, [self.email])
         
-        
+
     
 class UserEmail(BaseModel):
     user = models.ForeignKey(SiteUser)
@@ -118,15 +119,6 @@ class UserWebsites(BaseModel):
     
 
 
-class Skill(BaseModel):
-    name = models.CharField(max_length=128)
-    
-class UserSkills(BaseModel):
-    user = models.ForeignKey(SiteUser)
-    skill = models.ForeignKey(Skill)    
-    skill_name = models.CharField(max_length=128)
-    #attested_users = models.ManyToManyField() 
-    
 class UserRecommendation(BaseModel):
     RECOMMEND_AS = (
                     (1,_('Colleague')), 

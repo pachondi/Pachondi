@@ -12,6 +12,8 @@ from django.template.context import RequestContext
 from django.utils.http import base36_to_int
 from app.users.models import SiteUser
 from django.views.generic.edit import FormView
+from django.contrib import messages
+from django.utils.translation import ugettext as _
 
 class RegistrationView(FormView):
     form_class = RegistrationForm
@@ -55,19 +57,26 @@ class RegistrationView(FormView):
         The user has provided valid information (this was checked in RegistrationForm.is_valid()). So now we 
         can create the user and log him in.
         """                     
-        user = form.save(**opts)           
-        user = authenticate(username=user.username,password=user.password)
-        if user is not None:
-            if user.is_active:
-                login(self.request, user)
-                # Redirect to a success page.
-                #else:
-                # Return a 'disabled account' error message                
-                return HttpResponseRedirect(self.post_signup_redirect)
+        user = form.save(**opts)
+        if user is not None:           
+            user = authenticate(username=user.username, password=user.password)
+            if user is not None:
+                if user.is_active:
+                    messages.add_message(self.request, messages.INFO, _('User registered, Kindly verify your email for full access.'))
+                    login(self.request, user)
+                    # Redirect to a success page.
+                    #else:
+                    # Return a 'disabled account' error message                
+                    return HttpResponseRedirect('/users/registration/step1')                
+            else:
+                messages.add_message(self.request, messages.INFO, _('Thanks for registering with us, kindly login.'))
+                return HttpResponseRedirect('/users/login')
+        else:
+            messages.add_message(self.request, messages.ERROR, _('Problem registering user.'))
+            return HttpResponseRedirect('/users/register')
             
-        user = form.save()
-        user = authenticate(username=user.email, password=user.password)
-        login(self.request, user)
+
+        
         return super(RegistrationView, self).form_valid(form)
         
     def form_invalid(self, form):
@@ -102,4 +111,5 @@ class ConfirmEmailView(RedirectView):
             
         return super(ConfirmEmailView, self).get_redirect_url(*args, **kwargs)
 
-    
+def perform_action(request, template_name):    
+    return render_to_response(template_name, context_instance=RequestContext(request))

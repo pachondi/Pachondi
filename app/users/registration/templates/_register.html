@@ -1,25 +1,20 @@
 {% load url from future %}
-
-<div id="signup">
-	<h3>Sign up</h3>
-	<div id="notify"></div>
-<form action="{% url 'register_view'%}" method="post">
-	{% csrf_token %}
-	<table>
-	  {% for field in form %}
-	  <tr>
-	  	<td>
-	    {{ field.label_tag }}
-	    </td>
-	    <td>
-	    	 {{ field }}
-	    </td>
-	    <td>
-	    	{{ field.errors }}
-	    </td>
-	  </tr>
-	  {% endfor %}
-	  </table>
-  <p><input type="submit" value="Signup" id="btanSignup" /></p>
-</form>
-</div>
+<div class="inner-border">
+        <h1>
+          <span>Get Started Now</span>
+          Choose the right path in your career it's free
+        </h1>        
+      <div class="box-signup-form center">
+      	<form action="{% url 'register_view'%}" method="post">
+				{% csrf_token %}
+      			<h2>Sign up</h2>
+      			<table>
+      			{{form}}
+      			</table>
+          		<input type="submit" value="Sign up"/>
+			</form>
+      	
+      	
+	
+        </div>
+      </div>

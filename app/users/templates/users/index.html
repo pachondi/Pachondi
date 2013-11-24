@@ -1,7 +1,9 @@
 {% extends "users/anonymousbase.html" %}
 
-{% block content %}
-{% include "_login.html" with form=login_form %}
 
+{% block header_content %}    
+{% include "_login.html" with form=login_form %}
+{% endblock %}
+{% block content %}
 {% include "_register.html" with form=signup_form %}
 {% endblock %}

@@ -1,85 +1,252 @@
-<!doctype html>
-<html>
+<html class="no-js fixed-layout" lang="en">
   <head>
-  	<link rel="stylesheet" href="{{MEDIA_URL}}css/style.css">
- 
-    <script src="{{STATIC_URL}}js/jquery-1.9.1.min.js"></script>
-    <script src="{{STATIC_URL}}js/underscore-min.js"></script>    
-    <script src="{{STATIC_URL}}js/backbone-min.js"></script>
-    <script>
-      
-    </script>
-    <script src="{{STATIC_URL}}js/app.js"></script>
-
-    <script type="text/html" id="tweetTemplate">
-      <a class="username"><%=username%></a>
-      <p class="message">
-        <%=message%>
-      </p>
-      <abbr class="timestamp"><%=timestamp%></abbr>
-    </script>
-   	<meta name="csrf-token" content="{{csrf_token}}">
-   	<style>
-	   	.menu
-	   	{
-	   		list-style:none;
-	   		float:right;
-	   	}
-   		.menu li
-   		{
-   			float:left;
-   			width:70px;
-   		}
-   		.textarea
-   		{
-   			width:450px;
-   		}
-   		.menu li a
-   		{
-   			text-decoration: none;
-   			color:maroon;
-   			font-family: verdana;
-   			font-size: 12px;
-   			font-weight: bold;
-   		}
-   		.logo{background-color:maroon;font-family:"Comic Sans MS" ;border:1px solid;
-   		
-   		text-align:center;
-   		padding:10px; 
-   		}
-   		.logo a{
-   		color:white;
-   		text-decoration: none;
-   		}
-   	</style>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<title>Pachondi.com</title>
+	<meta name="description" content="" />
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css"/>
   </head>
-  <body>
-  	<table>
-  	<tr>
-  		<td><h1 class="logo"><a href="/users/home">Pachondi.com</a></h1></td>
-  		<td>
-  			<ul class="menu">
-  				<li><a href="{% url 'app.users.views.home' %}">Home</a></li>
-  				<li><a href="{% url 'app.profile.views.profile' %}">Profile</a></li>
-  				<li><a href="/groups/">Groups</a></li>
-  				<li><a href="{% url 'app.users.settings.views.settings' %}">Settings</a></li>
-  				{% comment %}
+  <body id="homepage" class="" data-view="app" data-responsive="false" data-user-signed-in="false" >
+    
+
+    <div class="page">
+
+      <div class="page__canvas">
+        <div class="canvas">
+          <div class="canvas__header">
+              <header class="site-header">
+  <div class="site-header__logo-and-account">
+    <div class="header-primary">
+  <div class="container">
+    <div class="header-primary__container">
+      <div class="header-primary__brand">
+        <div class="site-switcher" data-view="siteSwitcher">
+  
+    <span class="logo">
+      Pachondi.com
+    </span>
+</div>
+
+      </div>
+
+      <div class="header-primary__right">
+        <div class="header-primary__community-links">
+          <ul class="navigation-list">
+  <li class="navigation-list__item--community-links">
+    <a href="">Messages</a>
+  </li>
+
+  <li class="navigation-list__item--community-links">    
+    <a href="{% url 'app.users.settings.views.settings' %}">Settings</a>
+    <div class="navigation-list_dropdown">
+      <ul class="dropdown">
+          <li><a href="#">Notification 1</a></li>
+          <li><a href="#">Notification 2</a></li>          
+      </ul>
+    </div>
+  </li>
+  
+</ul>
+
+        </div>
+
+        <div class="header-primary__user-nav">
+          <nav class="user-nav">
+
+    <div class="user-nav__item">
+    	
+      <a href=""><span>{{user}}</span></a>
+    </div>
+
+    <div class="user-nav__item">
+      <a href="{% url 'logout_view' %}">Logout</a>
+    </div>
+</nav>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+  </div>
+
+  				
+  				
+  				
+  <div class="site-header__categories">
+    <div class="header-secondary">
+  <div class="container">
+    <nav class="header-secondary__categories" role="navigation">
+        <ul class="navigation-list">
+    <li class="navigation-list__item">
+      <a href="{% url 'app.users.views.home' %}">Home</a>
+      <div class="navigation-list__dropdown">
+        <ul class="dropdown">
+          <li><a href="/page/top_sellers">Sub menu 1</a></li>
+          <li><a href="/author/top_authors">Sub menu 2</a></li>          
+        </ul>
+      </div>
+    </li>
+
+      <li class="navigation-list__item">
+        <a href="{% url 'app.profile.views.my_profile' %}">Profile</a>
+
+          <div class="navigation-list__dropdown">
+            <ul class="dropdown">
+                <li class="dropdown__divider"><a href="#">Special sub menu 1</a></li>
+                <li><a href="/category/wordpress/blog-magazine">Sub menu 1</a></li>                
+                <li class="dropdown__divider--top"><a href="#" class="navigation-list__external-link--in-dropdown" title="WordPress Plugins on CodeCanyon">WordPress Plugins <span class='is-visually-hidden'>on CodeCanyon</span></a></li>
+            </ul>
+          </div>
+      </li>
+      <li class="navigation-list__item">
+        <a href="/groups/">Groups</a>
+
+          <div class="navigation-list__dropdown">
+            <ul class="dropdown">
+                <li class="dropdown__divider"><a href="#">Popular Items</a></li>
+
+                <li><a href="#">Sub Menu 1</a></li>
+                            </ul>
+          </div>
+      </li>
+      <li class="navigation-list__item">
+        
+				{% comment %}
   				<li><a href="{% url 'network.views.connections' %}">Manage Connections</a></li>
   				{% endcomment %}
-  				{{request.user}}
-  				<li><a href="{% url 'logout_view' %}">Logout</a></li>
-  			</ul>
-  		</td>
-  	</tr>
-  	<tr><td colspan="2">
-  		{% if not request.user.is_verified %}
-		<p style="background-color:#FFE200;padding:5px;">
-			Your E-mail address not verified. Please verify your email address by following the steps mentioned in your registration email to have full access.		
-		</p>
-		{%endif%}
+          <div class="navigation-list__dropdown">
+            <ul class="dropdown">
+                <li class="dropdown__divider"><a href="#">Popular Items</a></li>
+
+                <li><a href="">Sub menu</a></li>
+            </ul>
+          </div>
+      </li>
+  </ul>
+
+    </nav>
+
+    <div class="header-secondary__search">
+      <form accept-charset="UTF-8" action="#" class="site-search" id="search" method="get"><div style="margin:0;padding:0;display:inline"></div>
+  	  <input autocomplete="off" id="term" name="term" placeholder="Start Searching �" type="text" value="" />
+  		<button type="submit">Search</button>
+	</form>
+    </div>
+  </div>
+</div>
+
+  </div>
+</header></div>
+
+<div class="canvas__body">
+            <div class="content-main" id="content">
+              <div class="container">
+{% if messages %}
+			<ul class="messages">
+			    {% for message in messages %}
+				    {% if "email_not_verified" in message.tags %}
+						<p style="background-color:#FFE200;padding:5px;">
+							Your E-mail address not verified. Please verify your email address by following the steps mentioned in your registration email to have full access.		
+						</p>
+					{% else %}
+						<li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+					{% endif %}
+			    {% endfor %}
+			</ul>
+			{% endif %}
+			
     {% block content %}
     {% endblock %}
-    </td></tr>
-    </table>
+    
+  
+</div>
+
+
+ 
+<div class="clear"><!--  --></div>
+
+
+              </div>
+            </div>
+
+            <footer class="site-footer">
+  <div class="site-footer__primary">
+    <div class="footer-primary">
+  <div class="container">
+
+    <div class="footer-primary__group--first">
+      <div class="footer-box">
+        
+        
+          
+        
+      </div>
+    </div>
+
+    <div class="footer-primary__group--second">
+      <div class="footer-box">
+        
+      </div>
+
+      <div class="footer-box">
+        
+      </div>
+    </div>
+
+    <div class="footer-primary__group--third">
+      <div class="footer-box">
+        
+      </div>
+
+      <div class="footer-box is-hidden-tablet-and-below">
+        <div class="footer-box__content">
+        
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-primary__group--fourth">
+      <div class="footer-box">
+        
+      </div>
+    </div>
+
+  </div>
+</div>
+  </div>
+
+  <div class="site-footer__secondary">
+    <div class="footer-secondary">
+  <div class="container">
+
+    <div class="footer-secondary__branding">
+      <div class="footer-branding">Pachondi        
+        <span class="footer-branding__copyright">
+          &copy; 2013
+        </span>
+        <a href="#" class="footer-branding__terms" rel="nofollow">Terms of Use</a>
+      </div>
+    </div>
+
+    <ul class="footer-secondary__copyright">
+      <li>Copyright &copy; 2013 <a href="#" target="_blank">Pachondi</a></li>
+      <li><a href="#" rel="nofollow">Terms of Usage</a></li>
+      <li><a href="#" target="_blank">Support/Help</a></li>      
+    </ul>
+
+    <div class="footer-secondary__trademarks">
+      any info 
+    </div>
+
+  </div>
+</div>
+  </div>
+</footer>
+          </div>
+        
+
+    </div>
   </body>
 </html>

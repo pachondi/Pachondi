@@ -1,5 +1,5 @@
 import urlparse
-from django.contrib import auth
+from django.contrib import auth, messages
 from django.contrib.auth import login, REDIRECT_FIELD_NAME
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
@@ -8,6 +8,7 @@ from django.views.generic.base import RedirectView
 from django.views.generic.edit import FormView
 from django.conf import settings
 from app.users.authentication.forms import EmailAuthenticationForm
+from django.utils.translation import ugettext as _
 
 class LoginView(FormView):
     """
@@ -84,6 +85,7 @@ class LogoutView(RedirectView):
     
     def get_redirect_url(self, *args, **kwargs):        
         if self.request.user.is_authenticated():
+            messages.add_message(self.request, messages.INFO, _('Logged out.'))
             auth.logout(self.request)        
             
         return super(LogoutView, self).get_redirect_url(*args, **kwargs)

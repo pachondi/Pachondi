@@ -153,7 +153,7 @@ def request_connect(request, uid, **kwargs):
 @login_required
 def delete_request_connect(request, uid, **kwargs):
     to_user = SiteUser.objects.get(pk=uid)
-    request.user.connectionrequests.delete_request(to_user)
+    request.user.relationships.remove(to_user)
     
     return redirect('/users/home', **kwargs)
 
@@ -168,6 +168,6 @@ def accept_connect(request, uid, **kwargs):
 @login_required
 def decline_connect(request, uid, **kwargs):
     from_user = SiteUser.objects.get(pk=uid)
-    request.user.connectionrequests.accept_request(from_user)
+    request.user.relationships.accept_request(from_user)
     
     return redirect('/users/home', **kwargs)

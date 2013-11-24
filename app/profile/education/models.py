@@ -18,15 +18,3 @@ class Degree(BaseModel):
 
 
 
-class UserEducation(BaseModel):
-    user = models.ForeignKey(SiteUser)
-    school = models.ForeignKey(School)
-    school_name = models.CharField(max_length=100)
-    #Location
-    studied_from=models.DateField()
-    studied_to=models.DateField()
-    degree = models.ForeignKey(Degree)
-    field_of_study = models.CharField(max_length=100)
-    grade=models.CharField(max_length=100)
-    activities=models.CharField(max_length=100)
-    descriptin=models.CharField(max_length=100)

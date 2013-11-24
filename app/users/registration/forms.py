@@ -57,7 +57,7 @@ class RegistrationForm(forms.ModelForm):
         return terms
     
     def save(self, commit=True, domain_override=None,
-             email_template_name='registration/signup_email.html',
+             email_template_name='signup_email.html',
              use_https=False, token_generator=default_token_generator):
         user = super(RegistrationForm, self).save(commit=False)
         user.set_password(self.cleaned_data["password1"])
@@ -68,7 +68,7 @@ class RegistrationForm(forms.ModelForm):
         user.dob = self.cleaned_data["dob"]
         user.is_active = True
         user.is_verified = False
-        user.user_slug = user.first_name+'.'+user.last_name+'.'+user.dob.isoformat()
+        user.user_slug = user.first_name.replace(' ','.') +'-'+user.last_name.replace(' ','.') +'.'+user.dob.isoformat()
             
         if commit:
             user.save()

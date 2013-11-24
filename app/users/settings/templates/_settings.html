@@ -1,19 +1,22 @@
 
 {% load url from future %}
 
-<b> User Settings</b><br/>
-{{user}}<br/>
-Member since: {{user.created_date}}<br/>
-Primary Email:{{user.email}}
+<div id="user-settings" class="shadowed">
+<div class="inner-boundary">
+<div class="inner-border">
+<h3> User Settings</h3>
+<p><b>Member since: </b>{{user.created_date}}</p>
+<p><b>Primary Email:</b>{{user.email}}</p>
 
-<h4>Privacy Settings</h4>
+<h3>Privacy Settings</h3>
 <form action="{% url 'app.users.settings.views.settings'%}" method="post">
 	{% csrf_token %}
 {% for field in form %}
-  <p>
-    {{ field.label_tag }}: {{ field }}
-    {{ field.errors }}
+	<p>
+  <b>{{ field.label_tag }}</b>: {{ field }}
+      {{ field.errors }}
   </p>
   {% endfor %}
   <p><input type="submit" value="save settings" id="btnSave" /></p>
 </form>
+</div></div></div>

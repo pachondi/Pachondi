@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from app.groups.models import Group, GroupMember
+from app.groups.models import Group, GroupMember, GroupDiscussion
 
 #http://stackoverflow.com/questions/6069070/how-to-use-permission-required-decorators-on-django-class-based-views
 class GroupForm(ModelForm):
@@ -31,4 +31,9 @@ class GroupMemberSettingsForm(ModelForm):
     class Meta:
         model = GroupMember
         exclude = ['is_member_moderator','is_member_owner']   
+        
+        
+class GroupDiscussionForm(ModelForm):
+    class Meta:
+        model = GroupDiscussion        
         

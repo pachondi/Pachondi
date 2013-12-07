@@ -22,6 +22,7 @@ urlpatterns += patterns('',
                         url(r'^profile/', include('app.profile.urls')),                        
 )
 
+"""
 urlpatterns += patterns('',
                         url(r'^group_discussions/', include('app.discussions.urls')),                       
 
@@ -37,7 +38,7 @@ urlpatterns += patterns('app.message.views',
                         
                         #(r'group_discussions/(?P<pk>\d+)','show'),
 )
-
+"""
 
 """::
 https://docs.djangoproject.com/en/1.4/ref/contrib/staticfiles/#other-helpers

@@ -4,9 +4,11 @@ from django.db.models.signals import post_save
 from django.utils.translation import ugettext as _
 
 from app.users.models import SiteUser
-from app.discussions.models import Discussion
-from app.message.models import Message
+#from app.discussions.models import Discussion
+#from app.message.models import Message
 from Pachondi.core.modelbase.models import BaseModel, SiteManager
+#from Pachondi.core.models.discussions import Discussion
+#from Pachondi.core.models.messages import Message
 from cities_light.models import Country, Region
 
 log = logging.getLogger(__name__)
@@ -64,21 +66,6 @@ class Group(BaseModel):
         return displayable_discussions    
     
     def get_group_discussions_with_messages(self):
-        """
-        properties of self.groupdiscussion_set
-         __class__, __delattr__, __dict__, __doc__, __format__, __getattribute__, __hash__, __init__,
-          __module__, __new__, __reduce__, __reduce_ex__, __repr__, __setattr__, __sizeof__, __str__,
-         __subclasshook__  __weakref__  _copy_to_model  _db  _inherited  _insert  _set_creation_counter
-         _update  add  aggregate all  annotate  bulk_create complex_filter contribute_to_class
-         core_filters count create creation_counter dates  db db_manager defer distinct exclude
-         exists  extra  filter get get_empty_query_set get_or_create 
-         get_prefetch_query_set get_query_set in_bulk  instance
-         iterator latest model none only order_by prefetch_related raw reverse
-         select_for_update select_related update  using values values_list        
-        """
-        """
-         _set doesn't 
-        """
         rs = [] # create an empty list that will hold the result set
         
         for gd in self.groupdiscussion_set.all():
@@ -150,7 +137,29 @@ class GroupMember(BaseModel):
     is_email_digest=models.BooleanField(default=False)
     is_announcement_emails=models.BooleanField(default=False)
     is_allow_member_messages=models.BooleanField(_('Allow members of this group to send me messages'),default=True)
+
+
+class GroupDiscussion(BaseModel):
+    name = models.CharField(max_length=30)
+    group = models.ForeignKey(Group)
+    created_by = models.ForeignKey(SiteUser)
+
+    def __unicode__(self):
+        return self.name+ " object"
     
+    def __str__(self):
+        return self.name+" object"
+
+        class Admin:
+            pass
+        
+        class Meta:
+            pass
+
+
+
+
+"""    
 class GroupDiscussion(Discussion):
     name = models.CharField(max_length=30)
     group = models.ForeignKey(Group)
@@ -200,4 +209,4 @@ class GroupType(BaseModel):
 
     def __unicode__(self):
         return self.type
-    
+""" 

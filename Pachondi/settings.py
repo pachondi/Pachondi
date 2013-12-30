@@ -14,11 +14,11 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'test', #os.path.join(PROJECT_DIR, '../db/pachondi_development'),                      # Or path to database file if using sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': os.path.join(PROJECT_DIR, '../db/pachondi_development'),                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
-        'USER': 'root',
-        'PASSWORD':'root',
+        #'USER': 'root',
+        #'PASSWORD':'root',
         'HOST':'',
         'PORT': '',                      # Set to mpty string for default.
     }
@@ -250,9 +250,9 @@ EMAIL_USE_TLS = True
 AUTH_USER_MODEL = 'users.SiteUser'
 LOGIN_REDIRECT_URL = '/users/home'
 LOGIN_URL = '/users/login'
-LOGIN_UNVERIFIED_REDIRECT_URL = '/profile/step-by-step'
+LOGIN_UNVERIFIED_REDIRECT_URL = '/profile/basic'
 LOGIN_EXEMPT_URLS = (
- r'^users/index$',
+ r'^users$',
  r'^users/logout$',
  r'^users/register$',
  r'^users/password_reset$',
@@ -262,7 +262,10 @@ LOGIN_EXEMPT_URLS = (
 LOGIN_UNVERIFIED_EXEMPT_URL = ( 
  r'^users/logout$',
  '^users/register/action$',
- '^profile/step-by-step$',
+ '^profile/basic$',
+ '^profile/company$',
+ '^profile/education$',
+ '^profile/skills$',
  '^profile/myprofile',
  r'^users/confirm/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)$',
  )

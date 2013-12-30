@@ -2,17 +2,23 @@
 {% load url from future %}
 {% block content %}
 
-Welcome {{user.first_name}},<br/>
-
-<form action="{%url 'app.profile.views.profile'%}" method="post">
-	 {% csrf_token %}
-  {% for field in form %}
-  <p>
-    {{ field.label_tag }}: {{ field }}
-    {{ field.errors }}
-  </p>
-  {% endfor %}
-  <p><input type="submit" value="Create Profile" /></p>
-</form>
-
+{{default_profile}}
+<a href="{%url 'profile_basic'%}">View</a>
+{%if profiles%}
+<h3>Manage MaskedProfiles</h3>
+<button value="Create New Profile"></button>
+<table>
+	<tr><td><b>Profile Name</b></td>
+		<td><b>Manage Profile</b></td>
+		<td><b>Default</b></td>
+	</tr>
+{% for profile in profiles %}
+<tr>
+	<td><span style="text-transform:capitalize">{{profile.name}}</span></td>
+	<td><a href="{%url 'my_profile' profile.id%}">View</a></td>
+	<td>{{profile.is_default}}</td>
+	</tr>	
+{% endfor %}
+</table>
+{%endif%}
 {% endblock %}

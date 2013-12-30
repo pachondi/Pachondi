@@ -60,7 +60,7 @@ urlpatterns += patterns('app.users.posts',
 )
 
 urlpatterns += patterns('app.users.views',
-                       (r'^index$', index,{'template_name': 'users/index.html'}),
+                       (r'^$', index,{'template_name': 'users/index.html'}),
                        
                        (r'^home$', home,{'template_name': 'users/home.html'}),             
                        

@@ -37,7 +37,7 @@ class LoginRequiredMiddleware:
         else:
             if not request.user.is_verified:
                 if not any(m.match(path) for m in UNVERIFIED_EXEMPT_URLS):
-                    messages.add_message(request, messages.WARNING, 'Email address not verified kindly verify to start using our services.', 'email_not_verified')
-                    messages.add_message(request, messages.INFO, 'Meanwhile, let us know more about you so that we can get into action.', 'notification')
+                    messages.add_message(request, messages.WARNING, 'Email address not verified kindly verify to start using our services.', 'warning')
+                    messages.add_message(request, messages.INFO, 'Meanwhile, let us know more about you so that we can get into action.', 'info')
                     return HttpResponseRedirect(settings.LOGIN_UNVERIFIED_REDIRECT_URL)
                 

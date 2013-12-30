@@ -30,9 +30,9 @@
 <div class="shadowed profile">
 <div class="inner-boundary"> 
 	<div class="inner-border">   
-	<h2>Work Experience</h2>
+	<h2>Work Experience (<a href="{%url 'profile_company' profile_id%}">Add New</a>)</h2>
 	{% for company in companies %}
-		<form method="get" action="/profiles/myprofile/company/edit/{{company.id}}">
+		<form method="get" action="{%url 'profile_company' profile_id company.id%}">
 		<p><b>Company name:</b>{{company.company_name}}</p>
 		<p><b>Industry:</b>{{company.industry}}</p>
 		<p><b>Position Name:</b>{{company.position_name}}</p>
@@ -49,8 +49,9 @@
 <div class="shadowed profile">
 <div class="inner-boundary"> 
 	<div class="inner-border">   
-	<h2>Education</h2>
+	<h2>Education (<a href="{%url 'profile_education' profile_id%}">Add New</a>)</h2>
 	{% for edu in education %}
+	<form method="get" action="{%url 'profile_education' profile_id edu.id%}">
 		<p><b>Graduated from:</b>{{edu.school_name}}</p>
 		<p><b>Degree:</b>{{edu.degree}}</p>
 		<p><b>Field of study:</b>{{edu.field_of_study}}</p>
@@ -58,6 +59,8 @@
 		<p><b>Activities:</b>{{edu.activities}}</p>
 		<p><b>Description:</b>{{edu.descriptin}}</p>
 		<p><b>Period:</b>{{edu.studied_from}} to {{edu.studied_to}}</p>
+		<input type="submit" value="Edit" />
+	</form>
 	{% endfor %}
 </div>	
 </div>

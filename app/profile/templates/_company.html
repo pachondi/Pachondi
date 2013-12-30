@@ -1,0 +1,16 @@
+{% extends "users/base.html" %}
+{% load i18n %}
+{% block content %}
+<div class="shadowed" style="margin-top: 20px;">
+	<div class="inner-boundary"> 
+	<div class="inner-border">
+<form action="{% url 'profile_company' profile_id%}" method="post">
+	{% csrf_token %}
+<table>
+{{ form }}
+</table>
+	<input type="submit" value="{% trans "save profile" %}"/>
+</form>
+</div></div></div>
+
+{% endblock %}

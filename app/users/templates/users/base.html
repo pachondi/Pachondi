@@ -90,7 +90,7 @@
     </li>
 
       <li class="navigation-list__item">
-        <a href="{% url 'app.profile.views.my_profile' %}">Profile</a>
+        <a href="{% url 'app.profile.views.profile' %}">Profile</a>
 
           <div class="navigation-list__dropdown">
             <ul class="dropdown">
@@ -144,17 +144,11 @@
             <div class="content-main" id="content">
               <div class="container">
 {% if messages %}
-			<ul class="messages">
-			    {% for message in messages %}
-				    {% if "email_not_verified" in message.tags %}
-						<p style="background-color:#FFE200;padding:5px;">
-							Your E-mail address not verified. Please verify your email address by following the steps mentioned in your registration email to have full access.		
-						</p>
-					{% else %}
-						<li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-					{% endif %}
+			
+			    {% for message in messages %}				    
+						<div {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>					
 			    {% endfor %}
-			</ul>
+			
 			{% endif %}
 			
     {% block content %}

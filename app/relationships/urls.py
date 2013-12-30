@@ -1,6 +1,6 @@
-from django.conf.urls.defaults import patterns, url
 from app.relationships.views import relationship_redirect, RelationshipListView, request_connect, decline_connect, \
     accept_connect, delete_request_connect
+from django.conf.urls import patterns, url
 
 urlpatterns = patterns('app.relationships.views',
    (r'^request/(?P<uid>\d+)$', request_connect),

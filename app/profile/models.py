@@ -28,6 +28,18 @@ class UserProfileManager(SiteManager):
         p = UserProfile.objects.get(is_default=True, user=self.instance)
         return p 
     
+    def get_profile(self, profile_id):
+        p = UserProfile.objects.get(pk=profile_id)
+        return p
+    
+    def get_masked_profiles(self):
+        p = UserProfile.objects.filter(is_default=False,user=self.instance)
+        return p
+    
+    def get_all_profiles(self):
+        p = UserProfile.objects.filter(user=self.instance)
+        return p
+    
 class UserProfileCompanyManager(SiteManager):
     def __init__(self, instance=None, *args, **kwargs):
         super(UserProfileCompanyManager, self).__init__(*args, **kwargs)

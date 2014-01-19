@@ -1,4 +1,6 @@
 # Create your views here.
+import pdb; 
+
 
 import logging
 from django.contrib.auth.decorators import login_required
@@ -9,18 +11,25 @@ from django.views.generic.edit import CreateView, UpdateView
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 from django.core.urlresolvers import reverse_lazy
 
-from app.groups.models import Group, GroupMember
-from app.groups.forms import GroupForm, GroupAdminSettingsForm, GroupOwnerSettingsForm, GroupMemberSettingsForm
+from app.groups.models import Group, GroupMember, GroupDiscussion
+from app.groups.forms import GroupForm, GroupAdminSettingsForm, GroupOwnerSettingsForm, GroupMemberSettingsForm, GroupDiscussionForm
 
 # get a logging instance
 log = logging.getLogger(__name__)
 
 class GroupCreateView(CreateView):
     model = Group
-    template_name = 'groups/group_form_create.html' #  else seachers <appname>_form.html
-    form_class = GroupOwnerSettingsForm # else shows all Model element
+    template_name = 'groups/group_form_create.html'  #  else seachers <appname>_form.html
+    form_class = GroupOwnerSettingsForm  # else shows all Model element
     
     def form_valid(self, form):
+        """
+        @todo: 
+        Now why did  I do form.instance.user? I forgot!!
+        Looks like a very important assignment.
+        Might have thrown an error
+        Also needs to set form date
+        """
         form.instance.owner = self.request.user
         return super(GroupCreateView, self).form_valid(form)
     
@@ -39,20 +48,20 @@ class GroupUpdateView(UpdateView):
         deactivating the group and transfer or ownership.
     """
     model = Group
-    template_name = 'groups/group_form_update.html' #  else seachers <appname>_form.html
+    template_name = 'groups/group_form_update.html'  #  else seachers <appname>_form.html
     
 
     def dispatch(self, request, *args, **kwargs):
-        #load the model
+        # load the model
         group = Group.objects.get(pk=kwargs['pk']) 
-        #and member permissions
-        groupmember = GroupMember.objects.get(user=request.user.id,group=group)
+        # and member permissions
+        groupmember = GroupMember.objects.get(user=request.user.id, group=group)
          
         if groupmember.is_member_owner:
             return GroupOwnerSettingsUpdateView.as_view()(request, *args, **kwargs)
         elif groupmember.is_member_moderator:
             return GroupAdminSettingsUpdateView.as_view()(request, *args, **kwargs)
-        else: #return to the group with a message that you don't have permissions to view
+        else:  # return to the group with a message that you don't have permissions to view
             return GroupDetailView.as_view()(request, *args, **kwargs)
 
 class GroupAdminSettingsUpdateView(UpdateView):
@@ -65,7 +74,7 @@ class GroupOwnerSettingsUpdateView(UpdateView):
     template_name = 'groups/group_owner_form_update.html'
     form_class = GroupOwnerSettingsForm
 
-#there should be a way to merge GroupUpdate and GroupSettingsUpdate into one uber view for the admin
+# there should be a way to merge GroupUpdate and GroupSettingsUpdate into one uber view for the admin
 class GroupDetailView(DetailView):
     model = Group
     
@@ -76,19 +85,23 @@ class GroupDetailView(DetailView):
     def dispatch(self, request, *args, **kwargs):
         group = Group.objects.get(pk=kwargs['pk'])
         self.__custom_user = request.user.id
-        self.__custom_permission = _get_group_membership(group,self.__custom_user) 
+        self.__custom_permission = _get_group_membership(group, self.__custom_user) 
         return DetailView.dispatch(self, request, *args, **kwargs)
     
     def get_context_data(self, **kwargs):
-        context = super(GroupDetailView,self).get_context_data(**kwargs)
+        context = super(GroupDetailView, self).get_context_data(**kwargs)
         """ Pass the permission setting""" 
         context['user_access'] = self.__custom_permission
         """ Instantiate member settings form and pass to context """
         if self.__custom_permission not in ["nonmember"]:
-            groupmember = GroupMember.objects.get(user=self.__custom_user,group=kwargs['object'])
+            groupmember = GroupMember.objects.get(user=self.__custom_user, group=kwargs['object'])
             groupmembersettingsform = GroupMemberSettingsForm(instance=groupmember)
             context['group_member_settings_form'] = groupmembersettingsform
         
+        """get all discussions for the form and pass to context"""
+        """@todo:Should reduce count to 5, last created or modified or popular"""
+        group_discussion_list = GroupDiscussion.objects.filter(group=kwargs['object']);
+        context['group_discussion_list'] = group_discussion_list 
         return context
         
     def get_template_names(self):
@@ -98,13 +111,14 @@ class GroupDetailView(DetailView):
         elif self.__custom_permission == 'owner':
             _return_template_name = 'groups/group_detail_owner.html'
         
+        # Custom Permission should be checked for None
         return _return_template_name
      
 def _get_group_membership(group, user):
     
     try:
         _membership = None
-        groupmember = GroupMember.objects.get(user=user,group=group)
+        groupmember = GroupMember.objects.get(user=user, group=group)
     except GroupMember.DoesNotExist:    
         _membership = 'nonmember'
     else:
@@ -112,13 +126,13 @@ def _get_group_membership(group, user):
             _membership = 'owner'
         elif groupmember.is_member_moderator:
             _membership = 'admin'
-        else: #return to the group with a message that you don't have permissions to view
+        else:  # return to the group with a message that you don't have permissions to view
             _membership = 'member'
      
     return _membership       
 
 class GroupMemberSettingsUpdateView(UpdateView):
-    model=GroupMember
+    model = GroupMember
     template_name = 'groups/group_member_settings_update.html'
     form_class = GroupMemberSettingsForm
     
@@ -128,10 +142,10 @@ class GroupMemberSettingsUpdateView(UpdateView):
 @login_required
 def show_all(request):    
     group_list = Group.objects.filter(_is_active=True)
-    user=get_object_or_404(SiteUser, id=request.user.id)
+    user = get_object_or_404(SiteUser, id=request.user.id)
     
     return render_to_response(
-               'groups/list.html',                
+               'groups/list.html',
                {
                 'action':'',
                 'button':'',
@@ -142,12 +156,12 @@ def show_all(request):
            )
     
 @login_required
-def show_group(request, group_id,message=""):    
+def show_group(request, group_id, message=""):    
     group = Group.objects.get(id=group_id)
-    user=get_object_or_404(SiteUser, id=request.user.id)
+    user = get_object_or_404(SiteUser, id=request.user.id)
     
     return render_to_response(
-               'groups/group_detail.html',                
+               'groups/group_detail.html',
                {
                 'action':'',
                 'button':'',
@@ -157,3 +171,27 @@ def show_group(request, group_id,message=""):
                 },
                 context_instance=RequestContext(request)
            )
+    
+"""Group Discussion views
+"""
+
+class GroupDiscussionCreateView(CreateView):
+    model = GroupDiscussion
+    template_name = 'groups/discussions/group_discussions_create_form.html'  #  else seachers <appname>_form.html
+    form_class = GroupDiscussionForm  # else shows all Model element
+    
+    
+    """
+    @todo: hidden_http_referrer should go into some system constant
+    @todo: set failover return for group discussion
+    Return to the referrer url if set else just return to?
+    """
+    def get_success_url(self):
+        referrer_url = self.request.POST.get("hidden_http_referrer")
+        if not referrer_url:
+            return referrer_url
+    
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super(GroupDiscussionCreateView, self).form_valid(form)
+    

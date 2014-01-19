@@ -8,8 +8,8 @@
     {{ field.label_tag }}: {{ field }}
     {{ field.errors }}
   </p>
-  <input type="hidden" id="hidden_field_mode" name="hidden_field_name" value="create" />
   {% endfor %}
+  <input type="hidden" id="hidden_field_mode" name="hidden_field_name" value="create" />
   <p><input type="submit" value="Create Group" /></p>
 </form>
 {%endblock%}

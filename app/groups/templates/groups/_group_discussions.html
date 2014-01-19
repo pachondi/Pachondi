@@ -1,3 +1,17 @@
+{% include "groups/discussions/group_discussions_create_form.html" %}
+
 {% block group_discussions %}
-Lets see if it works for group discussions
+It will.
+{% comment %}
+A self containing entity.
+1. show all existing discussion (later reduce to top 3 and say... 500 more)
+2. Create new discussion
+{% endcomment %}
+
+{% block group_discussion_create %}
+{% endblock %}
+
+{% for discussion in group_discussion_list %} 
+<li>{{discussion.name}},{{discussion.group}},{{discussion.created_by}}</li>
+{% endfor %}
 {% endblock %}

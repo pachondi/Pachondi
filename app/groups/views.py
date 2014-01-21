@@ -11,8 +11,8 @@ from django.views.generic.edit import CreateView, UpdateView
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 from django.core.urlresolvers import reverse_lazy
 
-from app.groups.models import Group, GroupMember, GroupDiscussion
-from app.groups.forms import GroupForm, GroupAdminSettingsForm, GroupOwnerSettingsForm, GroupMemberSettingsForm, GroupDiscussionForm
+from app.groups.models import Group, GroupMember, GroupDiscussion, GroupDiscussionMessage
+from app.groups.forms import GroupForm, GroupAdminSettingsForm, GroupOwnerSettingsForm, GroupMemberSettingsForm, GroupDiscussionForm, GroupDiscussionMessageForm
 
 # get a logging instance
 log = logging.getLogger(__name__)
@@ -101,7 +101,7 @@ class GroupDetailView(DetailView):
         """get all discussions for the form and pass to context"""
         """@todo:Should reduce count to 5, last created or modified or popular"""
         group_discussion_list = GroupDiscussion.objects.filter(group=kwargs['object']);
-        context['group_discussion_list'] = group_discussion_list 
+        context['group_discussion_list'] = kwargs['object'].get_group_discussions_with_messages 
         return context
         
     def get_template_names(self):
@@ -182,16 +182,53 @@ class GroupDiscussionCreateView(CreateView):
     
     
     """
+    @todo: need to override dispatch to check referrer and referrer_type is passed
+    @todo: create a list of valid referrers
     @todo: hidden_http_referrer should go into some system constant
     @todo: set failover return for group discussion
+    @todo: random number in request for a href? required on https?
     Return to the referrer url if set else just return to?
     """
     def get_success_url(self):
         referrer_url = self.request.POST.get("hidden_http_referrer")
-        if not referrer_url:
-            return referrer_url
+        return referrer_url
     
+    def get_initial(self):
+        # Get the initial dictionary from the superclass method
+        initial = super(GroupDiscussionCreateView, self).get_initial()
+        # Copy the dictionary so we don't accidentally change a mutable dict
+        initial = initial.copy()
+        initial['created_by'] = self.request.user
+        initial['group'] = self.request.GET.get("referrer")
+        return initial
+        
     def form_valid(self, form):
         form.instance.owner = self.request.user
         return super(GroupDiscussionCreateView, self).form_valid(form)
     
+
+"""
+GroupDiscussionMessage views
+"""
+class GroupDiscussionMessageCreateView(CreateView):
+    model = GroupDiscussion
+    template_name = 'groups/discussions/messages/group_discussion_message_create_form.html'  #  else seachers <appname>_form.html
+    form_class = GroupDiscussionMessageForm  # else shows all Model element
+    
+    def get_success_url(self):
+        referrer_url = self.request.POST.get("hidden_http_referrer")
+        return referrer_url
+    
+    def get_initial(self):
+        # Get the initial dictionary from the superclass method
+        initial = super(GroupDiscussionMessageCreateView, self).get_initial()
+        # Copy the dictionary so we don't accidentally change a mutable dict
+        initial = initial.copy()
+        initial['created_by'] = self.request.user
+        initial['discussion'] = self.request.GET.get("referrer")
+        initial['group'] = self.request.GET.get("parent_referrer")
+        return initial
+        
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super(GroupDiscussionMessageCreateView, self).form_valid(form)

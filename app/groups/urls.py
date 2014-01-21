@@ -1,6 +1,6 @@
 from django.conf.urls import patterns
 from django.contrib.auth.decorators import login_required
-from app.groups.views import GroupCreateView, GroupUpdateView, GroupDetailView, GroupMemberSettingsUpdateView,GroupDiscussionCreateView 
+from app.groups.views import GroupCreateView, GroupUpdateView, GroupDetailView, GroupMemberSettingsUpdateView,GroupDiscussionCreateView,GroupDiscussionMessageCreateView 
 
 #http://www.wellfireinteractive.com/blog/fast-and-beautiful-urls-with-django/
 urlpatterns = patterns('app.groups.views',
@@ -10,5 +10,6 @@ urlpatterns = patterns('app.groups.views',
                        (r'^(?P<pk>\d+)$',GroupDetailView.as_view(),None,'group-show'),
                        (r'^member/(?P<pk>\d+)/edit$',login_required(GroupMemberSettingsUpdateView.as_view()),None,'group-member-settings-update'),
                        (r'^discussion/create$',login_required(GroupDiscussionCreateView.as_view()),None,'group-discussion-create'),
+                       (r'^discussion/message/create$',login_required(GroupDiscussionMessageCreateView.as_view()),None,'group-discussion-message-create'),
                        )
 

@@ -12,6 +12,7 @@ from Pachondi.core.modelbase.models import BaseModel, SiteManager
 from cities_light.models import Country, Region
 
 log = logging.getLogger(__name__)
+import pdb
 
 class GroupManager(SiteManager):
     pass
@@ -70,16 +71,12 @@ class Group(BaseModel):
         
         for gd in self.groupdiscussion_set.all():
             irs = (gd,gd.groupdiscussionmessage_set.count())
-            # if you don't do this here, 
-            # discussions with no messages wont be added
-            if gd.groupdiscussionmessage_set.exists() is False:
-                #log.debug(gd.groupdiscussionmessage_set.count())
-                rs.append(irs) 
-            
+            allm = []
             for gdm in gd.groupdiscussionmessage_set.all():
-                irss = irs + (gdm,) # if messages found for a group
-                rs.append(irss) #append the result set to a list.
-            
+                allm.append(gdm)
+            irs = irs + (allm,)
+            rs.append(irs)      
+        
         return rs
         
         #return [(gd_msgs.id,gd_msgs.raw_message,gd_msgs.group_discussion) for gd_msgs in self.groupdiscussion_set.groupdiscussionmessage_set.all()]
@@ -156,7 +153,12 @@ class GroupDiscussion(BaseModel):
         class Meta:
             pass
 
-
+class GroupDiscussionMessage(BaseModel):
+    message = models.TextField()
+    group = models.ForeignKey(Group)
+    discussion = models.ForeignKey(GroupDiscussion)
+    linked_message = models.ForeignKey('self',null=True,blank=True)
+    created_by = models.ForeignKey(SiteUser)
 
 
 """    

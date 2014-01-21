@@ -1,17 +1,23 @@
-{% include "groups/discussions/group_discussions_create_form.html" %}
+
 
 {% block group_discussions %}
-It will.
+
 {% comment %}
 A self containing entity.
 1. show all existing discussion (later reduce to top 3 and say... 500 more)
 2. Create new discussion
 {% endcomment %}
 
-{% block group_discussion_create %}
-{% endblock %}
 
-{% for discussion in group_discussion_list %} 
-<li>{{discussion.name}},{{discussion.group}},{{discussion.created_by}}</li>
+<div>
+<a href="{% url 'group-discussion-create' %}?referrer_type=group&referrer={{object.id}}" >New Discussion</a>
+</div>
+<div>
+{% for discussion,message_count,messages in group_discussion_list %} 
+<li>{{discussion.name}} ({{message_count}} messages),<a href="{% url 'group-discussion-message-create' %}?parent_referrer_type=group&parent_referrer={{object.id}}&referrer_type=dicussion&referrer={{discussion.id}}" >New Message</a></li>
+{% for messageobj in messages%}
+<li>{{messageobj.message}}, Posted by:{{messageobj.created_by}}</li>
+{% endfor %}
 {% endfor %}
 {% endblock %}
+</div>

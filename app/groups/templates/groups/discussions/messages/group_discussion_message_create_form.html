@@ -1,7 +1,7 @@
-{% block group_discussion_create %}
+{% block group_discussion_message_create %}
 
 
- <form action="{% url 'group-discussion-create' %}" method="post">
+ <form action="{% url 'group-discussion-message-create' %}" method="post">
 	 {% csrf_token %}
   {% for field in form %}
   <p>
@@ -11,7 +11,7 @@
   {% endfor %}
   <input id="hidden_field_mode" name="hidden_field_name" value="create" />
   <input id="hidden_http_referrer" name="hidden_http_referrer" value="{{ request.META.HTTP_REFERER }}" />
-  <p><input type="submit" value="Create Discussion" /></p>
+  <p><input type="submit" value="Create Message" /></p>
 </form>
 
 {% endblock %} 

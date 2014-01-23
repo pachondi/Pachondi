@@ -6,12 +6,13 @@ import logging
 from django.contrib.auth.decorators import login_required
 from app.users.models import SiteUser
 from django.template.context import RequestContext
+from django.views.generic import View
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView
 from django.shortcuts import render_to_response, redirect, get_object_or_404
 from django.core.urlresolvers import reverse_lazy
 
-from app.groups.models import Group, GroupMember, GroupDiscussion, GroupDiscussionMessage
+from app.groups.models import Group, GroupMember, GroupDiscussion, GroupDiscussionMessage, GroupDiscussionMessageVote
 from app.groups.forms import GroupForm, GroupAdminSettingsForm, GroupOwnerSettingsForm, GroupMemberSettingsForm, GroupDiscussionForm, GroupDiscussionMessageForm
 
 # get a logging instance
@@ -232,3 +233,14 @@ class GroupDiscussionMessageCreateView(CreateView):
     def form_valid(self, form):
         form.instance.owner = self.request.user
         return super(GroupDiscussionMessageCreateView, self).form_valid(form)
+
+
+class GroupDiscussionMessageLikeView(View):
+    
+    def get(self,request,*args,**kwargs):
+        """@todo: should be a better way to get http referrer"""
+        group_discussion_message = GroupDiscussionMessage.objects.get(id=kwargs['pk'])
+        referrer = request.META['HTTP_REFERER']
+        voteobj = GroupDiscussionMessageVote.objects.create(message = group_discussion_message,user = self.request.user)
+        return redirect(referrer)
+        

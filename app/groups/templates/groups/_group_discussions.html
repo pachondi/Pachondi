@@ -15,8 +15,14 @@ A self containing entity.
 <div>
 {% for discussion,message_count,messages in group_discussion_list %} 
 <li>{{discussion.name}} ({{message_count}} messages),<a href="{% url 'group-discussion-message-create' %}?parent_referrer_type=group&parent_referrer={{object.id}}&referrer_type=dicussion&referrer={{discussion.id}}" >New Message</a></li>
-{% for messageobj in messages%}
-<li>{{messageobj.message}}, Posted by:{{messageobj.created_by}}</li>
+{% for messageobj,likes in messages%}
+
+<div>{{messageobj.message}}, Posted by:{{messageobj.created_by}}
+<br/>
+
+<a href="{% url 'group-discussion-message-like' messageobj.id %}">Like<a/> ({{likes.total_likes}} Likes)
+
+</div>
 {% endfor %}
 {% endfor %}
 {% endblock %}

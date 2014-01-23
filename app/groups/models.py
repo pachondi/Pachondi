@@ -1,5 +1,6 @@
 import logging
 from django.db import models
+from django.db.models import Count
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext as _
 
@@ -73,7 +74,9 @@ class Group(BaseModel):
             irs = (gd,gd.groupdiscussionmessage_set.count())
             allm = []
             for gdm in gd.groupdiscussionmessage_set.all():
-                allm.append(gdm)
+                #get message counts
+                likes = GroupDiscussionMessageVote.objects.filter(message=gdm).aggregate(total_likes = models.Count('user'))
+                allm.append((gdm,likes))
             irs = irs + (allm,)
             rs.append(irs)      
         
@@ -159,6 +162,11 @@ class GroupDiscussionMessage(BaseModel):
     discussion = models.ForeignKey(GroupDiscussion)
     linked_message = models.ForeignKey('self',null=True,blank=True)
     created_by = models.ForeignKey(SiteUser)
+    
+
+class GroupDiscussionMessageVote(BaseModel):
+    message = models.ForeignKey(GroupDiscussionMessage)
+    user = models.ForeignKey(SiteUser)
 
 
 """    

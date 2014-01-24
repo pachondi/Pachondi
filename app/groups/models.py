@@ -75,7 +75,7 @@ class Group(BaseModel):
             allm = []
             for gdm in gd.groupdiscussionmessage_set.all():
                 #get message counts
-                likes = GroupDiscussionMessageVote.objects.filter(message=gdm).aggregate(total_likes = models.Count('user'))
+                likes = GroupDiscussionMessageVote.objects.filter(message=gdm).annotate(total_likes = models.Count('user'))
                 allm.append((gdm,likes))
             irs = irs + (allm,)
             rs.append(irs)      

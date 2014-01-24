@@ -1,4 +1,4 @@
-
+{% load like_tags %}
 
 {% block group_discussions %}
 
@@ -20,7 +20,8 @@ A self containing entity.
 <div>{{messageobj.message}}, Posted by:{{messageobj.created_by}}
 <br/>
 
-<a href="{% url 'group-discussion-message-like' messageobj.id %}">Like<a/> ({{likes.total_likes}} Likes)
+<a href="{% url 'group-discussion-message-like' messageobj.id %}">Like<a/> ({{likes|length}} Likes) 
+{% render_likes likes request.user %}
 
 </div>
 {% endfor %}

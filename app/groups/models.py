@@ -156,6 +156,14 @@ class GroupDiscussion(BaseModel):
         class Meta:
             pass
 
+
+"""
+#https://docs.djangoproject.com/en/dev/ref/contrib/comments/
+Not using comments module as it's going to be deprecated
+And don't want to use a third part app
+@todo: 
+@todo: enable all security features mentioned
+"""
 class GroupDiscussionMessage(BaseModel):
     message = models.TextField()
     group = models.ForeignKey(Group)

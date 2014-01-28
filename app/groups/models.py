@@ -1,4 +1,5 @@
 import logging
+from app.tagme.models import TagHelper 
 from django.db import models
 from django.db.models import Count
 from django.db.models.signals import post_save
@@ -143,7 +144,11 @@ class GroupDiscussion(BaseModel):
     name = models.CharField(max_length=30)
     group = models.ForeignKey(Group)
     created_by = models.ForeignKey(SiteUser)
-
+    
+    #@todo: how to make TagManager
+    objects = models.Manager()
+    tags = TagHelper()
+        
     def __unicode__(self):
         return self.name+ " object"
     

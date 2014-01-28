@@ -154,7 +154,8 @@ INSTALLED_APPS = (
     'Pachondi.core.modelbase',
     #'Pachondi.core.models',
     #'app.discussions',
-    #'app.message',    
+    #'app.message',
+    'app.tagme', 
     'app.users',
     'app.users.authentication',
     'app.users.registration', 
@@ -164,7 +165,7 @@ INSTALLED_APPS = (
     'app.relationships', 
     'app.profile',
     'app.profile.education', 
-    'app.profile.company',    
+    'app.profile.company',
     'cities_light',
     #'relationships',   
     # South for database migrations

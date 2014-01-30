@@ -4,9 +4,11 @@ Idea is that if the model is extended or manager is included
 """
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
-from django.db import models
+from django.db import models, IntegrityError
 from django.utils.translation import ugettext_lazy as _
 from app.tagme.utils import require_instance_manager
+
+
 
 import pdb
 
@@ -19,11 +21,15 @@ class Tag(models.Model):
     
     def save(self, *args, **kwargs):
         """
-        Need to modify self to make sure that only unique tag names and or slugs
+        @todo:Need to modify self to make sure that only unique tag names and or slugs
         are written to the database. By doing this, it becomes very easy to 
-        maintain. 
+        maintain. And all operations should be silent. All errors resolved
+        internally and no errors thrown
         """
-        return super(Tag,self).save(*args, **kwargs)
+        try:
+            return super(Tag,self).save(*args, **kwargs)
+        except IntegrityError:
+            return
         
     
     class Meta:
@@ -43,30 +49,26 @@ class TaggedItem(models.Model):
 
 class TagHelper(object):
     
-    def __init__(self):
-        self.x = 10
-    
     def __get__(self, obj, objtype):
         """
         Oh the sweet mother of everything that is pure!
         http://docs.python.org/2/howto/descriptor.html
         what a concept!
         """
-        pdb.set_trace()
+        tag_manager = TagManager(instance=obj,model=objtype) 
+        return tag_manager
+
+class TagManager(models.Manager):
+        
+    def __init__(self,instance,model):
+        self.instance = instance
+        self.model = model    
         
     def add(self,*tags):
-        """
-        obj.tags.add == obj.TagHelper().add
-        obj.d
-        if d defines a method __get__ then
-        do.__get__(obj).add?
-        """
         unique_tags = set([tag for tag in tags])
-        """
-        Check if any of the tags are already present
-        """
+        #Check if any of the tags are already present
         for tag in unique_tags:
             created_tag = Tag.objects.create(name=tag,slug=tag)
-            tag_item = TaggedItem(tag=created_tag)
-        
-            
+            pdb.set_trace()
+            tag_item = TaggedItem.objects.create(tag=created_tag,content_object=self.instance)
+            tag_item.save()

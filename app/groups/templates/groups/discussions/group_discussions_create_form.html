@@ -9,6 +9,9 @@
     {{ field.errors }}
   </p>
   {% endfor %}
+  <p>
+  <label for="discussion_tags">Tag: </label><input type="text" id="dicussion_tags" name="discussion_tags" value="" />
+  </p>
   <input id="hidden_field_mode" name="hidden_field_name" value="create" />
   <input id="hidden_http_referrer" name="hidden_http_referrer" value="{{ request.META.HTTP_REFERER }}" />
   <p><input type="submit" value="Create Discussion" /></p>

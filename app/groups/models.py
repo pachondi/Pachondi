@@ -176,7 +176,6 @@ class GroupDiscussionMessage(BaseModel):
     linked_message = models.ForeignKey('self',null=True,blank=True)
     created_by = models.ForeignKey(SiteUser)
     
-
 class GroupDiscussionMessageVote(BaseModel):
     message = models.ForeignKey(GroupDiscussionMessage)
     user = models.ForeignKey(SiteUser)

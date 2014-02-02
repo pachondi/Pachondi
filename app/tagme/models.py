@@ -6,7 +6,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.db import models, IntegrityError
 from django.utils.translation import ugettext_lazy as _
-from app.tagme.utils import require_instance_manager
+from app.tagme.utils import tag_parser
 
 
 
@@ -19,18 +19,19 @@ class Tag(models.Model):
     name = models.CharField(verbose_name=_('Name'),unique=True,max_length=100)
     slug = models.SlugField(verbose_name=_('Slug'),unique=True,max_length=100)
     
+    """
     def save(self, *args, **kwargs):
-        """
+        
         @todo:Need to modify self to make sure that only unique tag names and or slugs
         are written to the database. By doing this, it becomes very easy to 
         maintain. And all operations should be silent. All errors resolved
         internally and no errors thrown
-        """
+        
         try:
             return super(Tag,self).save(*args, **kwargs)
         except IntegrityError:
             return
-        
+      """  
     
     class Meta:
         verbose_name = _("Tag")
@@ -42,9 +43,12 @@ class TaggedItem(models.Model):
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
     content_object = generic.GenericForeignKey('content_type', 'object_id')
-
+    
+    class Meta:
+        unique_together = ("tag","content_type","object_id")
+    
     # On Python 3: def __str__(self):
-    def __unicode__(self):
+    def __str__(self):
         return self.tag
 
 class TagHelper(object):
@@ -64,11 +68,16 @@ class TagManager(models.Manager):
         self.instance = instance
         self.model = model    
         
-    def add(self,*tags):
-        unique_tags = set([tag for tag in tags])
+    def add(self,tags):
+        unique_tags = tag_parser(tags)
+        return
         #Check if any of the tags are already present
         for tag in unique_tags:
-            created_tag = Tag.objects.create(name=tag,slug=tag)
-            pdb.set_trace()
-            tag_item = TaggedItem.objects.create(tag=created_tag,content_object=self.instance)
-            tag_item.save()
+            created_tag, is_new = Tag.objects.get_or_create(name=tag,slug=tag)
+            try:
+                tag_item = TaggedItem.objects.create(tag=created_tag,content_object=self.instance)
+            except IntegrityError:
+                pass
+            else:    
+                tag_item.save()
+    

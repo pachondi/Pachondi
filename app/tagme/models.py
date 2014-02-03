@@ -5,6 +5,8 @@ Idea is that if the model is extended or manager is included
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.db import models, IntegrityError
+from django.db.models.fields import Field
+from django.db.models.fields.related import RelatedField
 from django.utils.translation import ugettext_lazy as _
 from app.tagme.utils import tag_parser
 
@@ -59,7 +61,9 @@ class TagHelper(object):
         http://docs.python.org/2/howto/descriptor.html
         what a concept!
         """
-        tag_manager = TagManager(instance=obj,model=objtype) 
+        tag_manager = TagManager(instance=obj,model=objtype)
+        #objtype._meta.add_field(self) 
+        #pdb.set_trace()
         return tag_manager
 
 class TagManager(models.Manager):
@@ -70,7 +74,7 @@ class TagManager(models.Manager):
         
     def add(self,tags):
         unique_tags = tag_parser(tags)
-        return
+        
         #Check if any of the tags are already present
         for tag in unique_tags:
             created_tag, is_new = Tag.objects.get_or_create(name=tag,slug=tag)
@@ -81,3 +85,16 @@ class TagManager(models.Manager):
             else:    
                 tag_item.save()
     
+    def remove(self,tags):
+        unique_tags = tag_parser(tags)
+        
+        for tag in unique_tags:
+            try:
+                tag_to_be_deleted = Tag.objects.get(name=tag)
+                try:
+                    TaggedItem.objects.get(tag=tag_to_be_deleted).delete()
+                except TaggedItem.DoesNotExist:
+                    pass    
+            except Tag.DoesNotExist:
+                pass   
+            

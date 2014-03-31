@@ -11,7 +11,7 @@ urlpatterns = patterns('',
 )
 
 urlpatterns += patterns('',
-                        url(r'^users/', include('app.users.urls')),                        
+                        url(r'^', include('app.users.urls')),                        
 )
 
 urlpatterns += patterns('',

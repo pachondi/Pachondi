@@ -21,6 +21,7 @@ def index(request, template_name = 'index.html',
                         context_instance=RequestContext(request))
 
 @login_required
+
 def home(request, template_name):
     user = get_object_or_404(SiteUser, id=request.user.id)
     connections = user.relationships.friends()

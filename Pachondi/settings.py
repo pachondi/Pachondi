@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 # although not all choices may be available on all operating systems.
 # In a Windows environment this must be set to your system time zone.
 TIME_ZONE = 'America/Chicago'
-
+DEFAULT_INDEX_TABLESPACE=''
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
@@ -150,7 +150,7 @@ INSTALLED_APPS = (
     'Pachondi.core.modelbase',
     #'Pachondi.core.models',
     'Pachondi.libs.discussions',
-    'Pachondi.libs.message',    
+    'Pachondi.libs.message',      
     'app.users',
     'app.users.authentication',
     'app.users.registration', 
@@ -163,6 +163,8 @@ INSTALLED_APPS = (
     'app.profile.company',
     'app.profile.skills',     
     'cities_light',
+    'taggit',
+    'app.connections',
     #'relationships',   
     # South for database migrations
     #'south',    
@@ -248,24 +250,24 @@ EMAIL_USE_TLS = True
 
 
 AUTH_USER_MODEL = 'users.SiteUser'
-LOGIN_REDIRECT_URL = '/users/home'
-LOGIN_URL = '/users/login'
+LOGIN_REDIRECT_URL = '/home'
+LOGIN_URL = '/login'
 LOGIN_UNVERIFIED_REDIRECT_URL = '/profile/basic'
 LOGIN_EXEMPT_URLS = (
- r'^users$',
- r'^users/logout$',
- r'^users/register$',
- r'^users/password_reset$',
- r'^users/confirm/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)$',
+ r'^$',
+ r'^/logout$',
+ r'^register$',
+ r'^/password_reset$',
+ r'^/confirm/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)$',
   # allow any URL under /legal/*
 ) 
 LOGIN_UNVERIFIED_EXEMPT_URL = ( 
- r'^users/logout$',
- '^users/register/action$',
+ r'^logout$',
+ '^register/action$',
  '^profile/basic$',
  '^profile/company$',
  '^profile/education$',
  '^profile/skills$',
  '^profile/myprofile',
- r'^users/confirm/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)$',
+ r'^/confirm/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)$',
  )

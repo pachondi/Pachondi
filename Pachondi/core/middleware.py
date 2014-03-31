@@ -31,8 +31,11 @@ class LoginRequiredMiddleware:
         path = path.rstrip('/')
         
         if not request.user.is_authenticated():            
-            if not any(m.match(path) for m in EXEMPT_URLS):                
-                return HttpResponseRedirect(settings.LOGIN_URL + '?next=' + path)
+            if not any(m.match(path) for m in EXEMPT_URLS):
+                if path:
+                    return HttpResponseRedirect(settings.LOGIN_URL + '?next=' + path)
+                else:
+                    return HttpResponseRedirect(settings.LOGIN_URL)
             
         else:
             if not request.user.is_verified:

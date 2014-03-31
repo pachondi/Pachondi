@@ -58,7 +58,6 @@ class RegistrationView(FormView):
         can create the user and log him in.
         """                     
         user = form.save(**opts)
-        form.save_m2m()
         if user is not None:           
             user = authenticate(username=user.username, password=user.password)
             if user is not None:

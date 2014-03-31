@@ -20,25 +20,31 @@ class UserProfileManager(SiteManager):
         self.instance = instance
         
     def has_default_profile(self):
-        if UserProfile.objects.filter(is_default=True, user=self.instance):
+        if self.filter(is_default=True, user=self.instance):
             return True
         return False
         
     def get_default_profile(self):
-        p = UserProfile.objects.get(is_default=True, user=self.instance)
+        p = self.get(is_default=True, user=self.instance)
         return p 
     
     def get_profile(self, profile_id):
-        p = UserProfile.objects.get(pk=profile_id)
+        p = self.get(pk=profile_id)
         return p
     
     def get_masked_profiles(self):
-        p = UserProfile.objects.filter(is_default=False,user=self.instance)
+        p = self.filter(is_default=False,user=self.instance)
         return p
     
     def get_all_profiles(self):
-        p = UserProfile.objects.filter(user=self.instance)
+        p = self.filter(user=self.instance)
         return p
+    
+    
+    def get_all_profiles_by(self, content_type_id, criteria_id):
+        if(content_type_id==27):            
+            return UserProfile.objects.filter(companies__in = UserProfileCompany.objects.filter(position_id = criteria_id))
+    
     
 class UserProfileCompanyManager(SiteManager):
     def __init__(self, instance=None, *args, **kwargs):
@@ -90,6 +96,12 @@ class UserProfile(BaseModel):
     def __unicode__(self):
         return self.name  
     
+    def total_experience(self):
+        total_exp = 0 
+        for experience in self.companies.all():
+            total_exp += (experience.worked_to - experience.worked_from).days/365
+            
+        return total_exp
     
 class UserProfileCompany(BaseModel):
     user = models.ForeignKey(SiteUser)

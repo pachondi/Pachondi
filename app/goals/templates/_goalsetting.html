@@ -1,0 +1,20 @@
+{% load url from future %}
+<div class="inner-border">
+        <h1>
+          <span>Set Your Goal</span>
+          Choose the right path in your career it's free
+        </h1>        
+      <div class="box-signup-form center">
+      	<form action="{% url 'register_view'%}" method="post">
+				{% csrf_token %}
+      			<h2>Sign up</h2>
+      			<table>
+      			{{form}}
+      			</table>
+          		<input type="submit" value="Sign up"/>
+			</form>
+      	
+      	
+	
+        </div>
+      </div>

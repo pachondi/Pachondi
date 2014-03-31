@@ -6,9 +6,10 @@ from django.utils.http import int_to_base36
 from django.core.mail import send_mail
 from django.template import Context, loader
 from django.contrib.sites.models import Site
+from app.users.registration.forms import RegistrationForm
 
 
-class RegistrationForm(forms.ModelForm):
+class GoalSettingForm(forms.ModelForm):
     #username = forms.RegexField(label="Username", max_length=30, regex=r'^[\w.@+-]+$',
     #                            help_text="Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only.",
     #                            error_messages = {'invalid': "This value may contain only letters, numbers and @/./+/-/_ characters."})
@@ -17,7 +18,7 @@ class RegistrationForm(forms.ModelForm):
     #email2 = forms.EmailField(label="Confirm Email", max_length=75,
     #                         help_text = "Enter your email address again. A confirmation email will be sent to this address.")
 
-    password1 = forms.CharField(label=_("Password"), widget=forms.PasswordInput)
+    goal = forms.CharField(label=_("Password"), widget=forms.PasswordInput)
     password2 = forms.CharField(label=_("Confirm Password"), widget=forms.PasswordInput,
                                 help_text = _("Enter the same password as above, for verification."))
     terms = forms.BooleanField(label=_("I agree to the terms and conditions"))
@@ -26,7 +27,7 @@ class RegistrationForm(forms.ModelForm):
     
     class Meta:
         model = SiteUser
-        fields = ('first_name', 'last_name', 'email', 'dob','tags')
+        fields = ('first_name', 'last_name', 'email', 'dob')
 
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1", "")

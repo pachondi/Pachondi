@@ -151,7 +151,7 @@ def profile_education(request, profile_id, id=0, template_name='_education.html'
     
 @login_required
 def profile_skills(request, profile_id, id=0, template_name='_skills.html'):    
-    post_action_redirect = reverse('my_profile')
+    post_action_redirect = reverse('my_profile', profile_id)
             
     try:
         user_profile = UserProfile.objects.get(pk=profile_id)

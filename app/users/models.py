@@ -4,6 +4,8 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 from south.modelsinspector import timezone
 from django.utils.translation import ugettext as _
 from django.core.mail import send_mail
+from taggit.managers import TaggableManager
+from app.users.handler import UserConnectionHandler
 
 class SiteUserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -27,8 +29,7 @@ class SiteUserManager(BaseUserManager):
         u.save(using=self._db)
         return u
 
-
- 
+    
  
 class SiteUser(AbstractBaseUser, PermissionsMixin):
    
@@ -55,6 +56,8 @@ class SiteUser(AbstractBaseUser, PermissionsMixin):
     modified_date = models.DateTimeField(_('account modified date'), default=timezone.now)
     
     objects = SiteUserManager()    
+    tags=TaggableManager()
+    connections = UserConnectionHandler()
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['']
     

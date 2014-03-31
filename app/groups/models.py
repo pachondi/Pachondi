@@ -15,8 +15,8 @@ class GroupManager(SiteManager):
 class Group(BaseModel):
     GROUP_TYPE=((1,_('Technical')),(2,_('Corporate')))
     #logo = models.ImageField(upload_to='groupimg')
-    group_name = models.CharField(max_length=100)
-    group_type = models.PositiveSmallIntegerField(_('group type'), choices=GROUP_TYPE)
+    name = models.CharField(max_length=100)
+    type = models.PositiveSmallIntegerField(_('group type'), choices=GROUP_TYPE)
     summary=models.CharField(max_length=1000)
     description=models.CharField(max_length=2000)
     website=models.CharField(max_length=100)

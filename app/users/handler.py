@@ -2,6 +2,7 @@ from app.connections.models import BaseConnectionManager, ConnectionType,\
     ConnectionTypeManager
 
 
+
 class UserConnectionHandler(object):
     
     def __get__(self, instance, model):        
@@ -25,7 +26,7 @@ class UserConnectionManager(BaseConnectionManager):
     
     def friends(self):
         conn_type = ConnectionType.objects.get_for_connection('add')
-        return self.get_all_connections(conn_type)
+        return self.get_all_source()
     
     def friends_of_friends(self):
         connections = self.friends()  
@@ -53,17 +54,18 @@ class UserConnectionManager(BaseConnectionManager):
     def blocking(self):
         return self.get_all_target().blockable()
     
-    def add(self, target_object):
+    def add(self, target_object, group_name = None):
         inactive_connections = self.get_all_inactive_connections_with(target_object).befriendable()
-        
-        if inactive_connections.count() == 0:
-            self.create(target_object, ConnectionType.objects.get_for_connection('add'))
-        else:
+        is_active = False
+        if inactive_connections.count() > 0:
             for c in inactive_connections:
                 if self.instance != c.source_object:
                     c.activate()
+                    is_active = True
                 else:
                     print 'pending request.'
+        
+        self.create(target_object, ConnectionType.objects.get_for_connection('add'), is_active, group_name)
         
     def follow(self, target_object):                
         conn_type = self.connection_types.follow() 

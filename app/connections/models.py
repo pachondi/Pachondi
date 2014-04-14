@@ -6,7 +6,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.generic import GenericForeignKey
 from django.contrib.auth.models import BaseUserManager
 from django.db.models.query import QuerySet
-
+from locale import str
 
 class BaseConnectionManager(BaseUserManager):     
         
@@ -35,19 +35,29 @@ class BaseConnectionManager(BaseUserManager):
     
     def get_all_active_connections_with(self, target_object):
         return Connection.objects.get_all_connections_between(self.instance, target_object).active_connections()
-    
+        
     def get_all_inactive_connections_with(self, target_object):
         return Connection.objects.get_all_connections_between(self.instance, target_object).inactive_connections()
     
-    def create(self, target_object, conn_type):
+    def create(self, target_object, conn_type, is_active=False, sandbox_name = None):
+        through = SandBox.objects.get_system_sandbox(self.instance, sandbox_name)
         return Connection.objects.create(source_object=self.instance, 
                                   target_object=target_object, 
-                                  connection_type = conn_type
+                                  connection_type = conn_type,
+                                  through = through[0]
                                   )
+    
+class SandboxManager(models.Manager):
+    def get_system_sandbox(self, obj, sandbox_name):
+        content_type = ContentType.objects.get_for_model(obj)
+        if sandbox_name is None:
+            sandbox_name = 'sys_box_' + str(content_type.id) + '_' + str(obj.id) + '_default'
+        return self.get_or_create(object_id = obj.id, content_type = content_type, name = sandbox_name)
+    
     
 class ConnectionTypeManager(models.Manager):
     """
-    def add(self):
+    def add(selrf):
         return self.get_query_set().get(type='add')
     
     def follow(self):
@@ -116,16 +126,16 @@ class ConnectionQuerySet(QuerySet):
         return self.filter(is_active=False)
     
     def blockable(self):
-        return self.filter(connection_type = ConnectionType.objects.block())
+        return self.filter(connection_type = ConnectionType.objects.get_for_connection('block'))
     
     def notblockable(self):
-        return self.filter(~Q(connection_type = ConnectionType.objects.block()))
+        return self.filter(~Q(connection_type = ConnectionType.objects.get_for_connection('block')))
     
     def followable(self):
-        return self.filter(connection_type = ConnectionType.objects.follow())
+        return self.filter(connection_type = ConnectionType.objects.get_for_connection('follow'))
     
     def befriendable(self):
-        return self.filter(connection_type = ConnectionType.objects.add())
+        return self.filter(connection_type = ConnectionType.objects.get_for_connection('add'))
             
         
 class ConnectionType(models.Model):
@@ -139,7 +149,14 @@ class ConnectionType(models.Model):
 class ConnectionTypeMap(models.Model):
     content_type = models.ForeignKey(ContentType)
     connection_type = models.ForeignKey(ConnectionType)
+
+class SandBox(models.Model):
+    object_id = models.IntegerField()
+    content_type = models.ForeignKey(ContentType)
+    name = models.CharField(max_length=100)
     
+    objects = SandboxManager()
+        
 class Connection(models.Model):    
     source_id = models.IntegerField(verbose_name=_('Source id'), db_index=True)
     source_content_type = models.ForeignKey(ContentType, related_name='source')
@@ -147,6 +164,7 @@ class Connection(models.Model):
     target_content_type = models.ForeignKey(ContentType, related_name='target')
     connection_type = models.ForeignKey(ConnectionType)
     is_active = models.BooleanField(default=False)
+    through = models.ForeignKey(SandBox)
     source_object = GenericForeignKey('source_content_type','source_id')
     target_object = GenericForeignKey('target_content_type','target_id')    
     objects = ConnectionManager()
@@ -160,8 +178,9 @@ class Connection(models.Model):
         self.save()
         
     def unblock(self):
-        self.delete()    
-    
+        self.delete()
+        
+
 class Relationship(models.Model):
     name = models.CharField(max_length=100, unique=True)
   

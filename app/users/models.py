@@ -55,7 +55,7 @@ class SiteUser(AbstractBaseUser, PermissionsMixin):
     created_date = models.DateTimeField(_('account created date'), default=timezone.now)
     modified_date = models.DateTimeField(_('account modified date'), default=timezone.now)
     
-    objects = SiteUserManager()    
+    objects = UserConnectionHandler()    
     tags=TaggableManager()
     connections = UserConnectionHandler()
     USERNAME_FIELD = 'email'
@@ -138,5 +138,5 @@ class UserRecommendation(BaseModel):
     created_date = models.DateTimeField()
  
     
-    
+
     

@@ -157,6 +157,7 @@ INSTALLED_APPS = (
     'app.users.settings',
     'app.users.posts', 
     'app.groups',    
+    'app.goals',
     'app.relationships', 
     'app.profile',
     'app.profile.education', 

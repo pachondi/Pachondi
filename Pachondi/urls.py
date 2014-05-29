@@ -10,6 +10,10 @@ urlpatterns = patterns('',
                         url(r'^groups/', include('app.groups.urls')),
 )
 
+urlpatterns = patterns('',
+                        url(r'^goals/', include('app.goals.urls')),
+)
+
 urlpatterns += patterns('',
                         url(r'^', include('app.users.urls')),                        
 )
